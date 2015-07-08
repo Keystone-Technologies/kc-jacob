@@ -1,0 +1,42 @@
+.widget {
+  border: @kt-blue-7e 1px solid;
+  border-radius: 4px;
+  background: @kt-white;
+
+  h2 {
+    color: @kt-blue-7e;
+  }
+
+  .rss-feed {
+    height: 100%;
+    max-height: 318px;
+    min-height: 318px;
+    overflow-y: scroll;
+
+    ul {
+      list-style-type: none;
+      margin: 0px;
+      padding: 0px;
+      width: 100%;
+    }
+
+    li {
+      background-color: @kt-grey-c3;
+      position: relative !important;
+
+      &:first-child {
+        border-top: none;
+      }
+
+      &:nth-child(2n) {
+        background-color: white;
+      }
+
+      a{
+        color: @kt-blue-7e;
+        display: block;
+
+      }
+    }
+  }
+}

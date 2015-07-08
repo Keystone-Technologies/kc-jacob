@@ -1,0 +1,164 @@
+﻿<!doctype html>
+<html class="no-js" id="startme" lang="en">
+    
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="plugins/jquery-ui-1.11.4/jquery-ui.min.css">
+        <link rel="stylesheet" href="styles/jquery.gridster.css">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+        <link href='http://fonts.googleapis.com/css?family=Neuton:200,300,400,700,800' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="styles/site.css">
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+        <meta charset="utf-8">
+        <title>Keystone Connect - start.me</title>
+        <meta content="Keystone Connect|Keystone Connect|" name="description">
+        <meta content="IE=EDGE" http-equiv="X-UA-Compatible">
+    </head>
+    
+    <body>
+        <div id="home">
+            <div id="trash" class="gridster">
+                <h2 class="text-center">
+                    <i class="glyphicon glyphicon-trash"></i>Remove</h2>
+            </div>
+            <div class="container">
+                <div class="col-xs-12">
+                    <div class="col-xs-12 grid-container">
+                        <div id="freewall1" class="free-wall"></div>
+                        <div id="freewall2" class="free-wall"></div>
+                        <div id="freewall3" class="free-wall"></div>
+                        <div id="freewall4" class="free-wall"></div>    
+                    </div>
+                    <!-- <div id="app-tray" class="text-center col-xs-12"></div>-->
+                        
+                    </div>
+            </div>
+            <div id="create-folder" class="col-xs-12">
+                <h2 class="text-center">
+                    <i class="glyphicon glyphicon-folder-open"></i>Create a Folder</h2>
+            </div>
+            <div id="app-store-modal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1>
+                                <img class="app-icon pull-left" src="img/AppStore_Icon.png" />App Store</h1>
+                            <p>Please select the app or widget you would like to add to your homescreen</p>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="row">
+                                        <div id="app-nav" class="col-xs-12">
+                                            <div class="row">
+                                                <ul class="nav navbar-nav">
+                                                    <li class="active">
+                                                        <a href="#">Apps <span class="sr-only">(current)</span></a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Widgets</a>
+                                                    </li>
+                                                </ul>
+                                                <form id="search-nav" class="navbar-form navbar-right" role="search">
+                                                    <div class="form-group">
+                                                        <i class="glyphicon glyphicon-search"></i>
+                                                        <input type="text" class="form-control" placeholder="Search">
+                                                    </div>
+                                                    <button type="submit" class="btn btn-default">Search</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <ul id="apps-container" class="list-inline">
+                                                <li>
+                                                    <a>
+                                                <img class="app-store-icon" src="img/Email_AppIcon.png" />
+                                            </a>
+                                                </li>
+                                                <li>
+                                                    <a>
+                                                <img class="app-store-icon" src="img/CalendarAppIcon.png" />
+                                            </a>
+                                                </li>
+                                                <li>
+                                                    <a>
+                                                <img class="app-store-icon" src="img/ChaseBankAppIcon.png" />
+                                            </a>
+                                                </li>
+                                                <li>
+                                                    <a>
+                                                <img class="app-store-icon" src="img/FlightsAppIcon.png" />
+                                            </a>
+                                                </li>
+                                                <li>
+                                                    <a>
+                                                <img class="app-store-icon" src="img/GmailAppIcon.png" />
+                                            </a>
+                                                </li>
+                                                <li>
+                                                    <a>
+                                                <img class="app-store-icon" src="img/RSSAppIcon.png" />
+                                            </a>
+                                                </li>
+                                                <li>
+                                                    <a>
+                                                <img class="app-store-icon" src="img/LinkedInAppIcon.png" />
+                                            </a>
+                                                </li>
+                                                <li>
+                                                    <a>
+                                                <img class="app-store-icon" src="img/ListsAppIcon.png" />
+                                            </a>
+                                                </li>
+                                                <li>
+                                                    <a>
+                                                <img class="app-store-icon" src="img/PinterestAppIcon.png" />
+                                            </a>
+                                                </li>
+                                                <li>
+                                                    <a>
+                                                <img class="app-store-icon" src="img/SpotifyAppIcon.png" />
+                                            </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <a id="add-app" class="btn btn-primary">Save Changes</a>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal -->
+        </div>
+        <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+        <script src="plugins/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
+        <script src="js/freewall.js"></script>
+        <script src="js/jquery.rss.js"></script>
+        <script src="js/widget.js"></script>
+        <script src="js/main.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+        
+            });
+        </script>
+    </body>
+
+</html>
