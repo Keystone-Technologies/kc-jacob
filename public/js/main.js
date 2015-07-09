@@ -335,7 +335,7 @@ function firstWallInit() {
         cellH: 100,
         //        rightToLeft: true,
         onResize: function () {
-            wall.fitWidth();
+            wall.refresh();
             //            wall.setHoles({
             //             top:0,
             //             left:0,
@@ -345,8 +345,7 @@ function firstWallInit() {
             //            $(".folder").removeClass("brick");
         }
     });
-
-    wall.fitWidth();
+    wall.fitZone();
     console.log("main grid loaded");
 }
 
@@ -371,7 +370,7 @@ function freewallInit() {
             //            $(".folder").removeClass("brick");
         }
     });
-
+    wall.fitHeight();
     wall.fitWidth();
     console.log("main grid loaded");
 }
@@ -433,7 +432,7 @@ function iconRightClick($button) {
     $button.find(".dropdown-toggle").dropdown("toggle");//.dropdown("toggle");
 }
 
-$(function () {
+$(document).ready(function () {
     // requestPassword();
     freewallAddCells();
     firstWallInit();

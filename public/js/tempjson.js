@@ -1,17 +1,17 @@
 var firstWallJSON = [
     { "width": 400, "height": 400, "initialPosition":"0-0", "link":"http://www.google.com", "src": "", "class": "rss", "text": "<div class=\"widget text-center\"><h2><span class=\"glyphicon glyphicon-comment\"></span>News RSS</h2><div id=\"rss-feeds\" class=\"rss-feed\"></div></div>" },
-    { "width": 400, "height": 400, "initialPosition":"0-8", "link":"http://www.google.com", "src": "", "class": "rss", "text": "<div class=\"widget text-center\"><h2><span class=\"glyphicon glyphicon-cutlery\"></span>Food Menu</h2><div id=\"food-rss\" class=\"rss-feed\"></div></div>" },
-    { "width": 400, "height": 400, "initialPosition":"4-0", "link":"http://www.google.com", "src": "", "class": "rss", "text": "<div class=\"widget text-center\"><h2><span class=\"glyphicon glyphicon-usd\"></span>Finance</h2><div id=\"finance-rss\" class=\"rss-feed\"></div></div>" },
-    { "width": 400, "height": 400, "initialPosition":"4-8", "link":"http://www.google.com", "src": "", "class": "rss", "text": "<div class=\"widget text-center\"><h2><span class=\"glyphicon glyphicon-scale\"></span>Health</h2><div id=\"health-rss\" class=\"rss-feed\"></div></div>" },
-    { "width": 200, "height": 100, "initialPosition":"2-4", "link":"http://www.google.com", "src": "", "class": "folder", "text": "My Home" },
-    { "width": 200, "height": 100, "initialPosition":"2-6", "link":"http://www.google.com", "src": "", "class": "folder", "text": "My Health" },
-    { "width": 100, "height": 100, "initialPosition":"3-4", "link":"http://www.google.com", "src": "", "class": "folder", "text": "My Office" },
-    { "width": 200, "height": 200, "initialPosition":"3-5", "link":"http://www.google.com", "src": "", "class": "folder", "text": "My Connect" },
-    { "width": 100, "height": 100, "initialPosition":"3-7", "link":"http://www.google.com", "src": "", "class": "folder", "text": "My Home" },
-    { "width": 100, "height": 100, "initialPosition":"4-4", "link":"http://www.google.com", "src": "", "class": "folder", "text": "My Finances" },
-    { "width": 100, "height": 100, "initialPosition":"4-7", "link":"http://www.google.com", "src": "", "class": "folder", "text": "My Faith" },
-    { "width": 200, "height": 100, "initialPosition":"5-4", "link":"http://www.google.com", "src": "", "class": "folder", "text": "My Photos & Videos" },
-    { "width": 200, "height": 100, "initialPosition":"5-6", "link":"http://www.google.com", "src": "", "class": "folder", "text": "My News & Entertainment" }
+    { "width": 400, "height": 400, "initialPosition":"0-14", "link":"http://www.google.com", "src": "", "class": "rss", "text": "<div class=\"widget text-center\"><h2><span class=\"glyphicon glyphicon-cutlery\"></span>Food Menu</h2><div id=\"food-rss\" class=\"rss-feed\"></div></div>" },
+    { "width": 400, "height": 300, "initialPosition":"4-14", "link":"http://www.google.com", "src": "", "class": "rss", "text": "<div class=\"widget text-center\"><h2><span class=\"glyphicon glyphicon-usd\"></span>Finance</h2><div id=\"finance-rss\" class=\"rss-feed-small\"></div></div>" },
+    { "width": 400, "height": 300, "initialPosition":"4-0", "link":"http://www.google.com", "src": "", "class": "rss", "text": "<div class=\"widget text-center\"><h2><span class=\"glyphicon glyphicon-scale\"></span>Health</h2><div id=\"health-rss\" class=\"rss-feed-small\"></div></div>" },
+    { "width": 200, "height": 100, "initialPosition":"1-7", "link":"http://www.google.com", "src": "", "class": "folder", "text": "My Home" },
+    { "width": 200, "height": 100, "initialPosition":"0-9", "link":"http://www.google.com", "src": "", "class": "folder", "text": "My Health" },
+    { "width": 100, "height": 100, "initialPosition":"2-7", "link":"http://www.google.com", "src": "", "class": "folder", "text": "My Office" },
+    { "width": 200, "height": 200, "initialPosition":"3-8", "link":"http://www.google.com", "src": "", "class": "folder", "text": "My Connect" },
+    { "width": 100, "height": 100, "initialPosition":"4-10", "link":"http://www.google.com", "src": "", "class": "folder", "text": "My Home" },
+    { "width": 100, "height": 100, "initialPosition":"3-7", "link":"http://www.google.com", "src": "", "class": "folder", "text": "My Finances" },
+    { "width": 100, "height": 100, "initialPosition":"5-10", "link":"http://www.google.com", "src": "", "class": "folder", "text": "My Faith" },
+    { "width": 200, "height": 100, "initialPosition":"6-7", "link":"http://www.google.com", "src": "", "class": "folder", "text": "My Photos & Videos" },
+    { "width": 200, "height": 100, "initialPosition":"6-9", "link":"http://www.google.com", "src": "", "class": "folder", "text": "My News & Entertainment" }
 ];
 
 var tempJSON = [
@@ -433,8 +433,8 @@ var tempJSON = [
 ];
 
 var appTrayJSON = [
-    { "width": 100, "height": 100, "src": "img/AppStore_Icon.png", "class": "app-store-icon", "text": "" },
-    { "width": 100, "height": 100, "src": "img/InformationAppIcon.png", "class": "", "text": "" }
+    { "width": 100, "height": 100, "initialPosition":"0-4", "src": "img/AppStore_Icon.png", "class": "app-store-icon", "text": "" },
+    { "width": 100, "height": 100, "initialPosition":"0-5","src": "img/InformationAppIcon.png", "class": "", "text": "" }
 ];
 var appStoreJSON = [
     { "width": 100, "height": 100, "initialPosition":"", "src": "img/Email.png", "class": "", "text": "" },
