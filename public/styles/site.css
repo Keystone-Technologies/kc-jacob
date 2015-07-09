@@ -23,7 +23,8 @@ body {
 }
 #home {
   height: 900px;
-  overflow: scroll;
+  overflow-x: scroll;
+  overflow-y: hidden;
 }
 @keyframes start {
   from {
@@ -208,6 +209,8 @@ body {
 }
 #home #app-tray {
   z-index: 30;
+  position: fixed;
+  bottom: 0px;
 }
 #home #app-tray #grid-pagination {
   margin: 24px 0px 4px 0px;
