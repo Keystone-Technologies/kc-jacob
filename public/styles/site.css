@@ -86,25 +86,23 @@ html {
 #home .grid-container > ul {
   width: 7800px;
 }
-#home .grid-container #firstwall {
-  width: 1820px;
-  float: left;
-  display: inline-block;
-}
 #home .grid-container #freewall1 {
-  width: 1820px;
+  width: 0px;
   height: 730px;
   margin-left: 1925px;
+  display: none;
 }
 #firstwall {
-  height: 700px;
-  width: 1920px;
+  width: calc(100% - 20px);
+  margin: 0px 10px 0px 10px;
+  float: left;
+  display: inline-block;
+  height: 1700px;
   overflow: hidden;
 }
 #home .grid-container .free-wall {
   display: inline-block;
   float: left;
-  margin: 0px 50px 0px 50px;
 }
 #home .grid-container .free-wall .folder {
   background-color: #23789e !important;

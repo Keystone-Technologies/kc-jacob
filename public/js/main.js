@@ -3,6 +3,10 @@ var newName;
 var inputVal;
 var startingName;
 var $currentFolder;
+var iconwidth = 100;
+var iconheight = 100;
+var gridheight;
+var gridwidth;
 //var json = testAjax();
 
 function requestPassword() {
@@ -78,12 +82,6 @@ function freewallAddCells() {
     // freewallInit();
     $(".folder").children("img").remove();
     $(".rss").children("img").remove();
-    firstWallAddCells();
-    appStoreAddCells();
-    appTrayAddCells();
-    freewallInit();
-    appTrayInit();
-    addMenuToIcons();
 }
 
 function appTrayAddCells() {
@@ -110,7 +108,11 @@ function firstWallAddCells() {
     var temp = "<div class='brick {class}' link=\"{link}\" data-position=\"{initialPosition}\" style='width:{width}px; height:{height}px;' oncontextmenu=\"javascript:iconRightClick($(this));return false;\">{text}<img src={src} /></div>";
 
     var w = 1, h = 1, html = '', limitItem = firstWallJSON.length;
-
+    var columns = [];
+    var rows = [];
+    var widths = [];
+    var heights = [];
+    
     for (var i = 0; i < limitItem; ++i) {
         html += temp
             .replace(/\{width\}/, firstWallJSON[i].width)
@@ -120,8 +122,46 @@ function firstWallAddCells() {
             .replace("{link}", firstWallJSON[i].link)
             .replace("{initialPosition}", firstWallJSON[i].initialPosition)
             .replace("{text}", firstWallJSON[i].text);
+            columns.push(Number(firstWallJSON[i].initialPosition.split('-')[0]));
+            heights.push(Number(firstWallJSON[i].height));
+            rows.push(Number(firstWallJSON[i].initialPosition.split('-')[1]));
+            widths.push(Number(firstWallJSON[i].width));
+            
+    }
+    var colmax = 0;
+    var colmaxindex = 0;
+    for (var i = 0; i < columns.length; i++) {
+        if (columns[i] > colmax) {
+            colmaxindex = i;
+            colmax = columns[i];
+        }
+    }
+    var rowmax = 0;
+    var rowmaxindex = 0;
+    for (var i = 0; i < rows.length; i++) {
+        if (rows[i] > rowmax) {
+            rowmaxindex = i;
+            rowmax = rows[i];
+        }
+    }
+    gridheight = ((colmax + 1) * iconheight);
+    if (heights[colmaxindex] != iconheight){
+        gridheight += (heights[colmaxindex] - iconheight);
+    }
+    
+    gridwidth = ((rowmax + 1) * iconwidth);
+    if (rows[rowmaxindex] != iconwidth) {
+        gridwidth += (widths[rowmaxindex] - iconwidth);
+    }
+    //gridheight = ((Math.max.apply(null, columns) + 1) * 100);
+    //gridwidth = ((Math.max.apply(null, rows) + 1) * 100);
+    $("#firstwall").css("height", gridheight);
+    if (gridwidth > 1820){
+        $("#firstwall").css("width", gridwidth);
     }
     $("#firstwall").html(html);
+    console.log(gridheight);
+    console.log(gridwidth);
 }
 
 
@@ -331,8 +371,8 @@ function firstWallInit() {
         selector: '.brick',
         animate: true,
         fixSize: 0,
-        cellW: 100,
-        cellH: 100,
+        cellW: iconwidth,
+        cellH: iconheight,
         //        rightToLeft: true,
         onResize: function () {
             wall.refresh();
@@ -434,13 +474,17 @@ function iconRightClick($button) {
 
 $(document).ready(function () {
     // requestPassword();
+    firstWallAddCells();
     freewallAddCells();
+    appStoreAddCells();
+    appTrayAddCells();
     firstWallInit();
-    // appTrayAddCells();
-    // appStoreAddCells();
+    freewallInit();
+    appTrayInit();
+    addMenuToIcons();
     iconMenuListeners();
-    showFolderModal();
     staticEventListeners();
+    showFolderModal();
 });
 
 
