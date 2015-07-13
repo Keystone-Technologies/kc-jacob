@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html class="no-js" id="startme" lang="en">
 <head>
     <meta charset="utf-8">
@@ -246,7 +246,7 @@
         </div>
     </div>
     <div class="col-xs-12">
-        <div class="row grid-container">
+        <div class="row grid-container" id="grid-container">
                 <div id="firstwall" class="free-wall">
                 </div>
                 <div  id="freewall1" class="free-wall">
@@ -256,10 +256,10 @@
             <div class="row">
                 <div id="grid-pagination" class="col-xs-12">
                     <ul class="list-inline text-center">
-                        <li id="left-full"><span class="fa fa-angle-double-left"></span></li>
-                        <li id="left-slow"> <span class="fa fa-angle-left"></span></li>
-                        <li id="right-slow"> <span class="fa fa-angle-right"></span></li>
-                        <li id="right-full"><span class="fa fa-angle-double-right"></span></li>
+                        <li id="up-full"><span class="fa fa-angle-up"></span></li>
+                        <li id="left-full"> <span class="fa fa-angle-left"></span></li>
+                        <li id="right-full"> <span class="fa fa-angle-right"></span></li>
+                        <li id="down-full"><span class="fa fa-angle-down"></span></li>
                     </ul>
                 </div>
 
@@ -325,6 +325,7 @@
     </div>
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
     <script src="plugins/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
     <script src="js/tempjson.js"></script>
@@ -333,6 +334,7 @@
 
     <script src="js/main.js"></script>
     <script src="js/widget.js"></script>
+    <script src="js/swipe.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
             console.log("All JavaScript is loaded");

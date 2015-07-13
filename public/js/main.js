@@ -436,18 +436,22 @@ function appTrayInit() {
 function staticEventListeners() {
 
     var $gridContainer = $('.grid-container');
-    var gridScroll = $('#freewall1').outerWidth() - $gridContainer.width() + 50;
+    var gridScroll = $('#firstwall').outerWidth(true) - $gridContainer.width();
+    var scrolltime = 500;
+    if (gridScroll < 1500) {
+        scrolltime = 400;
+    }
     $("#left-full").click(function () {
-        $gridContainer.animate({ scrollLeft: '0' }, 1000, 'easeOutQuad');
+        $gridContainer.animate({ scrollLeft: '0' }, scrolltime, 'easeOutQuad');
     });
-    $("#left-slow").click(function () {
-        $gridContainer.animate({ scrollLeft: '+=-1200' }, 1000, 'easeOutQuad');
+    $("#up-full").click(function () {
+        $gridContainer.animate({ scrollTop: '+=-1200' }, 500, 'easeOutQuad');
     });
-    $("#right-slow").click(function () {
-        $gridContainer.animate({ scrollLeft: '+=1200' }, 1000, 'easeOutQuad');
+    $("#down-full").click(function () {
+        $gridContainer.animate({ scrollTop: '+=1200' }, 500, 'easeOutQuad');
     });
     $("#right-full").click(function () {
-        $gridContainer.animate({ scrollLeft: '+=' + gridScroll }, 1000, 'easeOutQuad');
+        $gridContainer.animate({ scrollLeft: gridScroll}, scrolltime, 'easeOutQuad');
     });
     $(".close-banner").click(function () {
         $(".banner").hide();
@@ -472,6 +476,29 @@ function iconRightClick($button) {
     $button.find(".dropdown-toggle").dropdown("toggle");//.dropdown("toggle");
 }
 
+function swipeHandlers(){
+    var $gridContainer = $('.grid-container');
+    var gridScroll = $('#firstwall').width() - $gridContainer.width();
+    var scrolltime = 500;
+    console.log("Gridscroll: " + gridScroll)
+    $("#grid-container").on('swipeleft', function(){
+        $gridContainer.animate({ scrollLeft: '0' }, scrolltime, 'easeOutQuad');
+       console.log("Swiped left");
+    });
+    $("#grid-container").on('swiperight', function(){
+        $gridContainer.animate({ scrollLeft: gridScroll}, scrolltime, 'easeOutQuad');
+        console.log("Swiped right");
+    });
+    $("#grid-container").on('swipeup', function(){
+        $gridContainer.animate({ scrollTop: '+=-1200' }, scrolltime, 'easeOutQuad');
+        console.log("Swiped up");
+    });
+    $("#grid-container").on('swipedown', function(){
+        $gridContainer.animate({ scrollTop: '+=1200' }, scrolltime, 'easeOutQuad');
+        console.log("Swiped down");
+    });
+}
+
 $(document).ready(function () {
     // requestPassword();
     firstWallAddCells();
@@ -485,8 +512,8 @@ $(document).ready(function () {
     iconMenuListeners();
     staticEventListeners();
     showFolderModal();
+    swipeHandlers();
 });
-
 
 
 //Archived functions for later stages of development

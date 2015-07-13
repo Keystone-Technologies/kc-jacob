@@ -74,10 +74,11 @@ html {
 }
 #home .grid-container {
   position: fixed;
-  height: calc(100% - 185px);
+  height: 700px;/* calc(100% - 185px); */
   width: 100%;
   margin-top: 70px;
   overflow: auto;
+  border-bottom: solid 5px #000;
 }
 
 .list-inline {
@@ -93,8 +94,7 @@ html {
   display: none;
 }
 #firstwall {
-  width: calc(100% - 20px);
-  margin: 0px 10px 0px 10px;
+  margin: 0px 10px 3px 10px;
   float: left;
   display: inline-block;
   height: 1700px;
@@ -158,6 +158,14 @@ html {
 }
 #home .grid-container .free-wall .brick .widget .rss-feed {
   height: 100%;
+}
+
+.rss-feed::-webkit-scrollbar {
+  display: inline-block;
+}
+
+.rss-feed-small::-webkit-scrollbar {
+  display: inline-block;
 }
 #home #trash {
   background-color: rgba(0, 0, 0, 0.6);
