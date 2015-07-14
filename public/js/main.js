@@ -66,8 +66,9 @@ function showFolderModal() {
 
 function freewallAddCells() {
     console.log("Adding cells to main grid");
-    var temp = "<div class='brick {class}' data-position=\"{initialPosition}\" link=\"{link}\" style='width:{width}px; height:{height}px;' oncontextmenu=\"javascript:iconRightClick($(this));return false;\">{text}<img src={src} /></div>";
-
+    //var temp = "<div class='brick {class}' data-position=\"{initialPosition}\" link=\"{link}\" style='width:{width}px; height:{height}px;' oncontextmenu=\"javascript:iconRightClick($(this));return false;\">{text}<img src={src} /></div>";
+    var temp = "<div class='brick {class}' data-position=\"{initialPosition}\" link=\"{link}\" style='width:{width}px; height:{height}px;'>{text}<img src={src} /></div>";
+    
     var w = 1, h = 1, html = '', limitItem = tempJSON.length;
 
     for (var i = 0; i < limitItem; ++i) {
@@ -108,8 +109,9 @@ function appTrayAddCells() {
 
 function firstWallAddCells() {
     console.log("Adding cells to app tray");
-    var temp = "<div class='brick {class}' link=\"{link}\" data-position=\"{initialPosition}\" style='width:{width}px; height:{height}px;' oncontextmenu=\"javascript:iconRightClick($(this));return false;\">{text}<img src={src} /></div>";
-
+    //var temp = "<div class='brick {class}' link=\"{link}\" data-position=\"{initialPosition}\" style='width:{width}px; height:{height}px;' oncontextmenu=\"javascript:iconRightClick($(this));return false;\">{text}<img src={src} /></div>";
+    var temp = "<div class='brick {class}' link=\"{link}\" data-position=\"{initialPosition}\" style='width:{width}px; height:{height}px;' >{text}<img src={src} /></div>";
+    
     var w = 1, h = 1, html = '', limitItem = firstWallJSON.length;
     var columns = [];
     var rows = [];
@@ -490,11 +492,11 @@ function swipeHandlers(){
         console.log("Swiped right");
     });
     $("#grid-container").on('swipeup', function(){
-        $gridContainer.animate({ scrollTop: '+=-' + verticalgridscroll }, scrolltime, 'easeOutQuad');
+        $gridContainer.animate({ scrollTop: '+=' + verticalgridscroll}, scrolltime, 'easeOutQuad');
         console.log("Swiped up");
     });
     $("#grid-container").on('swipedown', function(){
-        $gridContainer.animate({ scrollTop: '+=' + verticalgridscroll}, scrolltime, 'easeOutQuad');
+        $gridContainer.animate({ scrollTop: '+=-' + verticalgridscroll }, scrolltime, 'easeOutQuad');
         console.log("Swiped down");
     });
 }
