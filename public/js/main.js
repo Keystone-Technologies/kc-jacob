@@ -7,6 +7,9 @@ var iconwidth = 100;
 var iconheight = 100;
 var gridheight;
 var gridwidth;
+var scrolltime = 500;
+var horizontalgridScroll;
+var verticalgridscroll;
 //var json = testAjax();
 
 function requestPassword() {
@@ -376,6 +379,8 @@ function firstWallInit() {
         //        rightToLeft: true,
         onResize: function () {
             wall.refresh();
+            var horizontalgridScroll = $('#firstwall').width() - $("#grid-container").width();
+            var verticalgridscroll = $("#grid-container").height();
             //            wall.setHoles({
             //             top:0,
             //             left:0,
@@ -437,21 +442,19 @@ function staticEventListeners() {
 
     var $gridContainer = $('.grid-container');
     var gridScroll = $('#firstwall').outerWidth(true) - $gridContainer.width();
-    var scrolltime = 500;
-    if (gridScroll < 1500) {
-        scrolltime = 400;
-    }
+
+    console.log(gridScroll);
     $("#left-full").click(function () {
-        $gridContainer.animate({ scrollLeft: '0' }, scrolltime, 'easeOutQuad');
+        $gridContainer.animate({ scrollLeft: '+=-' + horizontalgridScroll }, scrolltime, 'easeOutQuad');
     });
     $("#up-full").click(function () {
-        $gridContainer.animate({ scrollTop: '+=-1200' }, 500, 'easeOutQuad');
+        $gridContainer.animate({ scrollTop: '+=-' + verticalgridscroll }, scrolltime, 'easeOutQuad');
     });
     $("#down-full").click(function () {
-        $gridContainer.animate({ scrollTop: '+=1200' }, 500, 'easeOutQuad');
+        $gridContainer.animate({ scrollTop: '+=' + verticalgridscroll }, scrolltime, 'easeOutQuad');
     });
     $("#right-full").click(function () {
-        $gridContainer.animate({ scrollLeft: gridScroll}, scrolltime, 'easeOutQuad');
+        $gridContainer.animate({ scrollLeft: '+=' + horizontalgridScroll}, scrolltime, 'easeOutQuad');
     });
     $(".close-banner").click(function () {
         $(".banner").hide();
@@ -477,24 +480,21 @@ function iconRightClick($button) {
 }
 
 function swipeHandlers(){
-    var $gridContainer = $('.grid-container');
-    var gridScroll = $('#firstwall').width() - $gridContainer.width();
-    var scrolltime = 500;
-    console.log("Gridscroll: " + gridScroll)
+    var $gridContainer = $('#grid-container');
     $("#grid-container").on('swipeleft', function(){
-        $gridContainer.animate({ scrollLeft: '0' }, scrolltime, 'easeOutQuad');
+        $gridContainer.animate({ scrollLeft: '+=' + horizontalgridScroll}, scrolltime, 'easeOutQuad');
        console.log("Swiped left");
     });
     $("#grid-container").on('swiperight', function(){
-        $gridContainer.animate({ scrollLeft: gridScroll}, scrolltime, 'easeOutQuad');
+        $gridContainer.animate({ scrollLeft: '+=-' + horizontalgridScroll}, scrolltime, 'easeOutQuad');
         console.log("Swiped right");
     });
     $("#grid-container").on('swipeup', function(){
-        $gridContainer.animate({ scrollTop: '+=-1200' }, scrolltime, 'easeOutQuad');
+        $gridContainer.animate({ scrollTop: '+=-' + verticalgridscroll }, scrolltime, 'easeOutQuad');
         console.log("Swiped up");
     });
     $("#grid-container").on('swipedown', function(){
-        $gridContainer.animate({ scrollTop: '+=1200' }, scrolltime, 'easeOutQuad');
+        $gridContainer.animate({ scrollTop: '+=' + verticalgridscroll}, scrolltime, 'easeOutQuad');
         console.log("Swiped down");
     });
 }
@@ -510,6 +510,11 @@ $(document).ready(function () {
     appTrayInit();
     addMenuToIcons();
     iconMenuListeners();
+    horizontalgridScroll = $('#firstwall').width() - $("#grid-container").width();
+    verticalgridscroll = $("#grid-container").height();
+    console.log($('#firstwall').width());
+console.log($("#grid-container").width());
+console.log(horizontalgridScroll + ', ' + verticalgridscroll)
     staticEventListeners();
     showFolderModal();
     swipeHandlers();
