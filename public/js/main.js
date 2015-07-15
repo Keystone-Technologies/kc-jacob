@@ -8,20 +8,13 @@ var iconheight = 100;
 var gridheight;
 var gridwidth;
 var scrolltime = 500;
-var horizontalgridscroll;
-var verticalgridscroll;
+var horizontalgridscroll = 100;
+var verticalgridscroll = 100;
 //var json = testAjax();
 
 $(window).resize(function(){
     $("#grid-container").height((Math.floor(($(window).height() - 200) / 100)) * 100);
     $("#grid-container").width(Math.floor(($(window).width() / 100)) * 100);
-    verticalgridscroll = $("#grid-container").height();
-    if ($("#grid-container").width > 1800){
-        horizontalgridscroll = 0;
-    }
-    else {
-        horizontalgridscroll = $("#grid-container").width();
-    }
 });
 
 function requestPassword() {
@@ -391,8 +384,6 @@ function firstWallInit() {
         //        rightToLeft: true,
         onResize: function () {
             wall.refresh();
-            //horizontalgridscroll = $('#firstwall').width() - $("#grid-container").width();
-            //verticalgridscroll = $("#grid-container").height();
             //            wall.setHoles({
             //             top:0,
             //             left:0,
@@ -451,21 +442,18 @@ function appTrayInit() {
 }
 
 function staticEventListeners() {
-
-    var $gridContainer = $('.grid-container');
-    var gridScroll = $('#firstwall').outerWidth(true) - $gridContainer.width();
-
+    
     $("#left-full").click(function () {
-        $gridContainer.animate({ scrollLeft: '+=-' + horizontalgridscroll }, scrolltime, 'easeOutQuad');
+       $('#grid-container').animate({ scrollLeft: '+=-' + horizontalgridscroll }, scrolltime, 'easeOutQuad');
     });
     $("#up-full").click(function () {
-        $gridContainer.animate({ scrollTop: '+=-' + verticalgridscroll }, scrolltime, 'easeOutQuad');
+       $('#grid-container').animate({ scrollTop: '+=-' + verticalgridscroll }, scrolltime, 'easeOutQuad');
     });
     $("#down-full").click(function () {
-        $gridContainer.animate({ scrollTop: '+=' + verticalgridscroll }, scrolltime, 'easeOutQuad');
+       $('#grid-container').animate({ scrollTop: '+=' + verticalgridscroll }, scrolltime, 'easeOutQuad');
     });
     $("#right-full").click(function () {
-        $gridContainer.animate({ scrollLeft: '+=' + horizontalgridscroll}, scrolltime, 'easeOutQuad');
+       $('#grid-container').animate({ scrollLeft: '+=' + horizontalgridscroll}, scrolltime, 'easeOutQuad');
     });
     $(".close-banner").click(function () {
         $(".banner").hide();
@@ -491,21 +479,21 @@ function iconRightClick($button) {
 }
 
 function swipeHandlers(){
-    var $gridContainer = $('#grid-container');
+
     $("#grid-container").on('swipeleft', function(){
-        $gridContainer.animate({ scrollLeft: '+=' + horizontalgridscroll}, scrolltime, 'easeOutQuad');
+       $('#grid-container').animate({ scrollLeft: '+=' + horizontalgridscroll}, scrolltime, 'easeOutQuad');
        console.log("Swiped left");
     });
     $("#grid-container").on('swiperight', function(){
-        $gridContainer.animate({ scrollLeft: '+=-' + horizontalgridscroll}, scrolltime, 'easeOutQuad');
+       $('#grid-container').animate({ scrollLeft: '+=-' + horizontalgridscroll}, scrolltime, 'easeOutQuad');
         console.log("Swiped right");
     });
     $("#grid-container").on('swipeup', function(){
-        $gridContainer.animate({ scrollTop: '+=' + verticalgridscroll}, scrolltime, 'easeOutQuad');
+       $('#grid-container').animate({ scrollTop: '+=' + verticalgridscroll}, scrolltime, 'easeOutQuad');
         console.log("Swiped up");
     });
     $("#grid-container").on('swipedown', function(){
-        $gridContainer.animate({ scrollTop: '+=-' + verticalgridscroll }, scrolltime, 'easeOutQuad');
+       $('#grid-container').animate({ scrollTop: '+=-' + verticalgridscroll }, scrolltime, 'easeOutQuad');
         console.log("Swiped down");
     });
 }
@@ -514,13 +502,6 @@ $(document).ready(function () {
     $("#grid-container").height((Math.floor(($(window).height() - 200) / 100)) * 100);
     $("#grid-container").width(Math.floor(($(window).width() / 100)) * 100);
     $("#grid-container").css('top', (($("#gridholder").height() - $("#grid-container").height()) / 2));
-    verticalgridscroll = $("#grid-container").height();
-    if ($("#grid-container").width() > 1800){
-        horizontalgridscroll = 0;
-    }
-    else {
-        horizontalgridscroll = $("#grid-container").width();
-    }
     // requestPassword();
     firstWallAddCells();
     freewallAddCells();
@@ -531,7 +512,6 @@ $(document).ready(function () {
     appTrayInit();
     addMenuToIcons();
     iconMenuListeners();
-    console.log(horizontalgridscroll + ', ' + verticalgridscroll)
     staticEventListeners();
     showFolderModal();
     swipeHandlers();
