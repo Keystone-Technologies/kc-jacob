@@ -44,14 +44,10 @@ html {
 
 #gridholder {
   position: relative;
-  display: flex;
-  flex-direction: column;
   top: 60px;
   width: 100%;
   height: calc(100% - 120px);
   margin: auto;
-  align-items: center;
-  justify-content: center;
 }
 #home {
   height: 900px;
@@ -88,6 +84,7 @@ html {
   position: relative;
   width: 100%;
   overflow: auto;
+  height: auto;
   /* outline: solid 1px #c3c3c3; */
   /* box-shadow: 0 2px 0 #c3c3c3; */
 }
