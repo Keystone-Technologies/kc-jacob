@@ -7,7 +7,7 @@ var iconwidth = 100;
 var iconheight = 100;
 var gridheight;
 var gridwidth;
-var scrolltime = 500;
+var scrolltime = 200;
 var horizontalgridscroll = 100;
 var verticalgridscroll = 100;
 //var json = testAjax();
@@ -15,6 +15,8 @@ var verticalgridscroll = 100;
 $(window).resize(function(){
     $("#grid-container").height((Math.floor(($(window).height() - 200) / 100)) * 100);
     $("#grid-container").width(Math.floor(($(window).width() / 100)) * 100);
+    $("#gridholder").height($(window).height() - 180);
+    $("#grid-container").css('top', (($("#gridholder").height() - $("#grid-container").height()) / 2));
 });
 
 function requestPassword() {

@@ -88,8 +88,8 @@ html {
   position: relative;
   width: 100%;
   overflow: auto;
-  /* border-bottom: solid 5px #000; */
-  box-shadow: 0 5px 0 #000;
+  /* outline: solid 1px #c3c3c3; */
+  /* box-shadow: 0 2px 0 #c3c3c3; */
 }
 
 .list-inline {
