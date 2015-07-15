@@ -42,6 +42,17 @@ html {
   height: 100%;
 }
 
+#gridholder {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  top: 60px;
+  width: 100%;
+  height: calc(100% - 120px);
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+}
 #home {
   height: 900px;
 }
@@ -74,10 +85,8 @@ html {
   -webkit-transition: top 0.5s, left 0.5s, width 0.5s, height 0.5s;
 }
 #home .grid-container {
-  position: fixed;
-  height: calc(100% - 200px);
+  position: relative;
   width: 100%;
-  margin-top: 70px;
   overflow: auto;
   /* border-bottom: solid 5px #000; */
   box-shadow: 0 5px 0 #000;

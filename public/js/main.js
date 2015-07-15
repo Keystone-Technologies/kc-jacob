@@ -513,6 +513,7 @@ function swipeHandlers(){
 $(document).ready(function () {
     $("#grid-container").height((Math.floor(($(window).height() - 200) / 100)) * 100);
     $("#grid-container").width(Math.floor(($(window).width() / 100)) * 100);
+    $("#grid-container").css('top', (($("#gridholder").height() - $("#grid-container").height()) / 2));
     verticalgridscroll = $("#grid-container").height();
     if ($("#grid-container").width() > 1800){
         horizontalgridscroll = 0;
