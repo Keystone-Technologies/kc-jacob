@@ -1,6 +1,11 @@
 // created by Minh Nguyen;
 // version 1.05;
 
+//scrap code
+var horizontalgridScroll;
+var verticalgridscroll;
+//
+
 (function($) {
     
     // for zeptojs;
@@ -824,6 +829,26 @@
                     setting.onBlockDrag.call(item, event);
                 },
                 onDrag: function(event, tracker) {
+                    console.log('dragging')
+                    
+                    //scrap code
+                    if ($item.parent().id == "firstwall"){
+                        var containerheight = $("#grid-container").outerHeight(true);
+                        var containerwidth = $("#grid-container").width();
+                        var wallheight = $("#firstwall").height();
+                        var wallwidth = $("firstwall").height();
+                        console.log($item.offset().top);
+                        console.log(containerheight);
+                        horizontalgridScroll = $('#firstwall').width() - $("#grid-container").width();
+                        verticalgridscroll = $("#grid-container").height();
+                        if (($item.offset().top + ($item.height() / 2)) > containerheight){
+                            $("#grid-container").animate({ scrollTop: '+=' + verticalgridscroll}, 500, 'easeOutQuad');
+                            $item.offset({top: $item.offset().top + containerheight});
+                            console.log("Offset to ")
+                        };
+                    }
+                    //
+                    
                     var position = $item.position();
                     var top = Math.round(position.top / cellH);
                     var left = Math.round(position.left / cellW);
@@ -837,6 +862,7 @@
                     setting.onBlockMove.call(item, event);
                 },
                 onDrop: function(event) {
+                    console.log('dropped');
                     var position = $item.position();
                     var top = Math.round(position.top / cellH);
                     var left = Math.round(position.left / cellW);

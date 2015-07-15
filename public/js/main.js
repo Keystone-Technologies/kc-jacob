@@ -12,6 +12,18 @@ var horizontalgridScroll;
 var verticalgridscroll;
 //var json = testAjax();
 
+$(window).resize(function(){
+    $("#grid-container").height((Math.floor(($(window).height() - 200) / 100)) * 100);
+    $("#grid-container").width(Math.floor(($(window).width() / 100)) * 100);
+    verticalgridscroll = $("#grid-container").height();
+    if ($("#grid-container").width > 1800){
+        horizontalgridScroll = 0;
+    }
+    else {
+        horizontalgridScroll = $("#grid-container").width();
+    }
+});
+
 function requestPassword() {
     $("#password-modal").modal({
         backdrop: 'static',
@@ -29,7 +41,7 @@ function requestPassword() {
 }
 
 function showFolderModal() {
-    $(".folder").dblclick(function () {
+    $(".folder").click(function () {
         $currentFolder = $(this);
         $(".folder-modal").modal('show');
         startingName = $currentFolder.clone().children().remove().end().text();
@@ -165,8 +177,6 @@ function firstWallAddCells() {
         $("#firstwall").css("width", gridwidth);
     }
     $("#firstwall").html(html);
-    console.log(gridheight);
-    console.log(gridwidth);
 }
 
 
@@ -242,7 +252,7 @@ function populateAddTo() {
 }
 
 function iconMenuListeners() {
-    $('.brick-icon[link]').dblclick(function() {
+    $('.brick-icon[link]').click(function() {
         window.location.href = $(this).attr("link");
         console.log($(this).attr("link"));
     });
@@ -372,7 +382,7 @@ function appStoreInit() {
 function firstWallInit() {
     var wall = new freewall("#firstwall");
     wall.reset({
-        draggable: true,
+        draggable: false, /*true,*/
         selector: '.brick',
         animate: true,
         fixSize: 0,
@@ -381,8 +391,8 @@ function firstWallInit() {
         //        rightToLeft: true,
         onResize: function () {
             wall.refresh();
-            var horizontalgridScroll = $('#firstwall').width() - $("#grid-container").width();
-            var verticalgridscroll = $("#grid-container").height();
+            //horizontalgridScroll = $('#firstwall').width() - $("#grid-container").width();
+            //verticalgridscroll = $("#grid-container").height();
             //            wall.setHoles({
             //             top:0,
             //             left:0,
@@ -432,7 +442,7 @@ function appTrayInit() {
         cellW: 100,
         cellH: 100,
         onResize: function () {
-            appTray.fitWidth();
+            appTray.fitZone();
         }
     });
 
@@ -445,7 +455,6 @@ function staticEventListeners() {
     var $gridContainer = $('.grid-container');
     var gridScroll = $('#firstwall').outerWidth(true) - $gridContainer.width();
 
-    console.log(gridScroll);
     $("#left-full").click(function () {
         $gridContainer.animate({ scrollLeft: '+=-' + horizontalgridScroll }, scrolltime, 'easeOutQuad');
     });
@@ -502,6 +511,15 @@ function swipeHandlers(){
 }
 
 $(document).ready(function () {
+    $("#grid-container").height((Math.floor(($(window).height() - 200) / 100)) * 100);
+    $("#grid-container").width(Math.floor(($(window).width() / 100)) * 100);
+    verticalgridscroll = $("#grid-container").height();
+    if ($("#grid-container").width() > 1800){
+        horizontalgridScroll = 0;
+    }
+    else {
+        horizontalgridScroll = $("#grid-container").width();
+    }
     // requestPassword();
     firstWallAddCells();
     freewallAddCells();
@@ -512,11 +530,7 @@ $(document).ready(function () {
     appTrayInit();
     addMenuToIcons();
     iconMenuListeners();
-    horizontalgridScroll = $('#firstwall').width() - $("#grid-container").width();
-    verticalgridscroll = $("#grid-container").height();
-    console.log($('#firstwall').width());
-console.log($("#grid-container").width());
-console.log(horizontalgridScroll + ', ' + verticalgridscroll)
+    console.log(horizontalgridScroll + ', ' + verticalgridscroll)
     staticEventListeners();
     showFolderModal();
     swipeHandlers();
