@@ -13,7 +13,7 @@ var verticalgridscroll = 100;
 //var json = testAjax();
 
 $(window).resize(function(){
-    $("#grid-container").height((Math.floor(($(window).height() - 200) / 100)) * 100);
+    $("#grid-container").height(Math.floor(($(window).height() - 200) / 100) * 100);
     $("#grid-container").width(Math.floor(($(window).width() / 100)) * 100);
     $("#gridholder").height($(window).height() - 180);
     $("#grid-container").css('top', (($("#gridholder").height() - $("#grid-container").height()) / 2));
