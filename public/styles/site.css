@@ -336,7 +336,6 @@ html {
   height: auto;
   overflow-x: scroll;
   margin: auto;
-    outline: solid 2px #c3c3c3;
 }
 #home #app-tray #app-drawer .icon {
   float: left;
