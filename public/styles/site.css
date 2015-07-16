@@ -124,10 +124,10 @@ html {
   float: left;
 }
 #home .grid-container .free-wall .folder {
-  background-color: #23789e !important;
-  content: "Folder";
   text-align: center;
+  background: #23789E;
 }
+
 #home .grid-container .free-wall .folder input {
   max-width: 95%;
 }
@@ -272,11 +272,14 @@ html {
   width: auto;
 }
 #home .folder {
-  background: #7eb0db;
   border-radius: 8px;
   cursor: pointer;
   height: 100%;
   width: 100%;
+}
+
+.folderimg {
+  
 }
 #home .folder h2 {
   margin: 0;
@@ -305,7 +308,6 @@ html {
   display: inline-block;
 }
 #home #app-tray .free-wall .folder {
-  background-color: #23789e !important;
   content: "Folder";
   text-align: center;
 }
@@ -468,6 +470,16 @@ html {
 p {
   color: #23789e;
   margin: 4px 10px;
+}
+.apptext {
+  position: relative;
+  width: 100px;
+  padding: 0px;
+  margin: auto;
+  color: #fff;
+  text-align: center;
+  
+  left: 50%;
 }
 .app-store-icon {
   height: auto;

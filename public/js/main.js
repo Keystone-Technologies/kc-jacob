@@ -106,7 +106,7 @@ function freewallAddCells() {
 
     $("#freewall1").html(html);
     // freewallInit();
-    $(".folder").children("img").remove();
+    $(".folder").children("img").css('opacity', 0);
     $(".rss").children("img").remove();
 }
 
@@ -141,13 +141,13 @@ function appTrayAddCells() {
     $("#app-drawer").width(apptraywidth);
     console.log("appdrawer width: " + apptraywidth)
     $("#app-drawer").html(html);
-    $(".folder, .rss").children("img").remove();
+    $(".rss").children("img").remove();
 }
 
 function firstWallAddCells() {
     console.log("Adding cells to app tray");
     //var temp = "<div class='brick {class}' link=\"{link}\" data-position=\"{initialPosition}\" style='width:{width}px; height:{height}px;' oncontextmenu=\"javascript:iconRightClick($(this));return false;\">{text}<img src={src} /></div>";
-    var temp = "<div class='brick {class}' link=\"{link}\" data-position=\"{initialPosition}\" style='width:{width}px; height:{height}px;' >{text}<img src={src} /></div>";
+    var temp = "<div class='brick {class}' link=\"{link}\" data-position=\"{initialPosition}\" style='width:{width}px; height:{height}px;' ><img src={src} /><p class='apptext'>{text}</p></div>";
     
     var w = 1, h = 1, html = '', limitItem = firstWallJSON.length;
     var columns = [];
@@ -519,6 +519,14 @@ function staticEventListeners() {
 
 }
 
+function setLabels(){
+    $.each($(".apptext"), function(){
+        $(this).width(iconwidth);
+        $(this).css('left', '-15px');
+        //console.log($(this).siblings('img').width())
+    });
+}
+
 function iconRightClick($button) {
     $button.find(".dropdown-toggle").dropdown("toggle");//.dropdown("toggle");
 }
@@ -559,6 +567,7 @@ $(document).ready(function () {
     freewallInit();
     appTrayInit();
     //addMenuToIcons();
+    setLabels();
     iconMenuListeners();
     staticEventListeners();
     showFolderModal();
