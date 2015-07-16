@@ -7,7 +7,7 @@
   user-select: none;
 }
 ::-webkit-scrollbar { 
-    display: none; 
+    display: none;
 }
 body {
   background-image: url(http://res-5.cloudinary.com/hp20rcdax/image/upload/f_auto,q_90/v1/backgrounds/rbepbw8y5za1qhn0n4i3);
@@ -40,6 +40,10 @@ html {
 
 #home .col-xs-12 {
   height: 100%;
+}
+
+.glyphicon {
+  margin: 0px 10px 0px 10px;
 }
 
 #gridholder {
@@ -82,7 +86,7 @@ html {
 }
 #home .grid-container {
   position: relative;
-  width: 100%;
+  width: 1440px;
   overflow: auto;
   height: auto;
   /* outline: solid 1px #c3c3c3; */
@@ -121,7 +125,6 @@ html {
   max-width: 95%;
 }
 #home .grid-container .free-wall .brick {
-  background: rgba(126, 176, 219, 0.2);
   cursor: pointer;
 }
 #home .grid-container .free-wall .brick img {
@@ -173,8 +176,13 @@ html {
   display: inline-block;
 }
 
-.rss-feed-small::-webkit-scrollbar {
+.rss-feed-small::-webkit-scrollbar, .rss-feed::-webkit-scrollbar {
   display: inline-block;
+}
+
+.rss-feed-small::-webkit-scrollbar-thumb, .rss-feed::-webkit-scrollbar-thumb {
+  background-color: #263c4b;
+  border-radius: 8px;
 }
 #home #trash {
   background-color: rgba(0, 0, 0, 0.6);
@@ -258,7 +266,9 @@ html {
   z-index: 30;
   position: fixed;
   bottom: 0px;
-  height: 120px;
+  height: 140px;
+  display: inline-block;
+  overflow: hidden;
 }
 #home #app-tray #grid-pagination {
   margin: 0px 0px 4px 0px;
@@ -316,12 +326,17 @@ html {
   height: 100px;
 }
 #home #app-tray #app-drawer {
-  background: rgba(0, 0, 0, 0.1);
+  /*background: rgba(0, 0, 0, 0.1); */
   border-radius: 4px;
   height: 106px;
   margin: 0 auto;
-  width: 100%;
-  max-width: 1400px;
+}
+#app-drawer-container {
+  width: 1000px;
+  height: auto;
+  overflow-x: scroll;
+  margin: auto;
+    outline: solid 2px #c3c3c3;
 }
 #home #app-tray #app-drawer .icon {
   float: left;
@@ -563,7 +578,7 @@ p {
 }
 .widget {
   border: #7eb0db 1px solid;
-  border-radius: 4px;
+  border-radius: 20px;
   background: #ffffff;
 }
 .widget h2 {
@@ -571,25 +586,21 @@ p {
 }
 .widget .rss-feed {
   height: 100%;
-  max-height: 318px;
-  min-height: 318px;
-  overflow-y: scroll;
-}
-
-.widget .rss-feed-small {
   max-height: 218px;
   min-height: 218px;
   overflow-y: scroll;
 }
 
-#finance-rss {
-height: 218px;
+.widget .rss-feed-small {
+  max-height: 118px;
+  min-height: 118;
+  overflow-y: scroll;
 }
 
 .widget .rss-feed ul, .rss-feed-small ul {
   list-style-type: none;
   margin: 0px;
-  padding: 0px;
+  padding: 0px 0px 0px 10px;
   width: 100%;
 }
 .rss-feed li, .rss-feed-small li {

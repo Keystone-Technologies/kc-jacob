@@ -7,17 +7,20 @@ var iconwidth = 100;
 var iconheight = 100;
 var gridheight;
 var gridwidth;
+var apptraywidth;
 var scrolltime = 200;
 var horizontalgridscroll = 100;
 var verticalgridscroll = 100;
+var apptrayscroll = 100;
 //var json = testAjax();
 
 $(window).resize(function(){
     $("#grid-container").height((Math.floor(($(window).height() - 200) / 100)) * 100);
     $("#grid-container").width(Math.floor(($(window).width() / 100)) * 100);
-    $("#gridholder").height($(window).height() - 180);
+    $("#gridholder").height($(window).height() - 200);
     $("#grid-container").css('top', (($("#gridholder").height() - $("#grid-container").height()) / 2));
     $("#grid-container").css('left', (($("#gridholder").width() - $("#grid-container").width()) / 2));
+    $("#app-drawer-container").width(Math.floor((($(window).width() - 100) / 100)) * 100);
 });
 
 function requestPassword() {
@@ -98,9 +101,10 @@ function freewallAddCells() {
 
 function appTrayAddCells() {
     console.log("Adding cells to app tray");
-    var temp = "<div class='brick {class}' style='width:{width}px; height:{height}px;'>{text}<img src={src} /></div>";
+    var temp = "<div class='brick {class}' data-position=\"{initialPosition}\" style='width:{width}px; height:{height}px;'>{text}<img src={src} /></div>";
 
     var w = 1, h = 1, html = '', limitItem = appTrayJSON.length;
+    var rows = [];
 
     for (var i = 0; i < limitItem; ++i) {
         html += temp
@@ -108,9 +112,22 @@ function appTrayAddCells() {
             .replace("{height}", appTrayJSON[i].height)
             .replace("{src}", appTrayJSON[i].src)
             .replace("{class}", appTrayJSON[i].class)
+            .replace("{initialPosition}", appTrayJSON[i].initialPosition)
             .replace("{text}", appTrayJSON[i].text);
+            rows.push(Number(appTrayJSON[i].initialPosition.split('-')[1]));
     }
-
+    var rowmax = 0;
+    var rowmaxindex = 0;
+    for (var i = 0; i < rows.length; i++) {
+        if (rows[i] > rowmax) {
+            rowmaxindex = i;
+            rowmax = rows[i];
+        }
+    }
+    console.log(rowmax);
+    apptraywidth = ((rowmax + 1) * iconwidth);
+    $("#app-drawer").width(apptraywidth);
+    console.log("appdrawer width: " + apptraywidth)
     $("#app-drawer").html(html);
     $(".folder, .rss").children("img").remove();
 }
@@ -436,7 +453,7 @@ function appTrayInit() {
         cellW: 100,
         cellH: 100,
         onResize: function () {
-            appTray.fitZone();
+            appTray.refresh();
         }
     });
 
@@ -457,6 +474,13 @@ function staticEventListeners() {
     });
     $("#right-full").click(function () {
        $('#grid-container').animate({ scrollLeft: '+=' + horizontalgridscroll}, scrolltime, 'easeOutQuad');
+    });
+    $("#apptrayleft").click(function () {
+       $('#app-drawer-container').animate({ scrollLeft: '+=-' + apptrayscroll }, scrolltime, 'easeOutQuad');
+    });
+    $("#apptrayright").click(function () {
+        console.log('clicked app tray button')
+       $('#app-drawer-container').animate({ scrollLeft: '+=' + apptrayscroll }, scrolltime, 'easeOutQuad');
     });
     $(".close-banner").click(function () {
         $(".banner").hide();
@@ -504,9 +528,10 @@ function swipeHandlers(){
 $(document).ready(function () {
     $("#grid-container").height((Math.floor(($(window).height() - 200) / 100)) * 100);
     $("#grid-container").width(Math.floor(($(window).width() / 100)) * 100);
-    $("#gridholder").height($(window).height() - 180);
+    $("#gridholder").height($(window).height() - 200);
     $("#grid-container").css('top', (($("#gridholder").height() - $("#grid-container").height()) / 2));
     $("#grid-container").css('left', (($("#gridholder").width() - $("#grid-container").width()) / 2));
+    $("#app-drawer-container").width(Math.floor((($(window).width() - 100) / 100)) * 100);
     // requestPassword();
     firstWallAddCells();
     freewallAddCells();
