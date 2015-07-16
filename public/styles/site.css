@@ -1,3 +1,10 @@
+@media only screen and (min-width: 1401px) {
+  #home{
+    /*background-color: #000000; */
+  }
+
+}
+
 * {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -172,6 +179,19 @@ html {
   height: 100%;
 }
 
+#scrollbar {
+  width: calc(100% - 20px);
+  margin: auto;
+  height: 2px;
+  background: #c3c3c3;
+}
+
+#scrollbarthumb {
+  width: 100px;
+  height: 2px;
+  background: #000;
+  position: relative;
+}
 .rss-feed::-webkit-scrollbar {
   display: inline-block;
 }
@@ -269,6 +289,7 @@ html {
   height: 140px;
   display: inline-block;
   overflow: hidden;
+  padding: 0px;
 }
 #home #app-tray #grid-pagination {
   margin: 0px 0px 4px 0px;
@@ -332,14 +353,14 @@ html {
   margin: 0 auto;
 }
 #app-drawer-container {
-  width: 1000px;
   height: auto;
   overflow-x: scroll;
   margin: auto;
 }
-#home #app-tray #app-drawer .icon {
+#home #app-tray #app-drawer .brick-icon {
   float: left;
   width: 100px;
+  cursor: pointer;
 }
 .hidden {
   display: none;
@@ -585,14 +606,14 @@ p {
 }
 .widget .rss-feed {
   height: 100%;
-  max-height: 218px;
-  min-height: 218px;
+  max-height: 200px;
+  min-height: 200px;
   overflow-y: scroll;
 }
 
 .widget .rss-feed-small {
-  max-height: 118px;
-  min-height: 118;
+  max-height: 100px;
+  min-height: 100;
   overflow-y: scroll;
 }
 

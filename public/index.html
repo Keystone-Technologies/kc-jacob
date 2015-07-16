@@ -5,7 +5,6 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title></title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -80,7 +79,7 @@
     <link href="x.favicons.start.me" ref="dns-prefetch">
     <link href="y.favicons.start.me" ref="dns-prefetch">
     <link href="z.favicons.start.me" ref="dns-prefetch">
-    <meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name='viewport' content=" initial-scale=1.0, user-scalable=no" >
     <link href="http://assets.start.me/assets/favicons/favicon-76-8efa3fd36b2b266f5f00a17812486998.png" rel="apple-touch-icon-precomposed" sizes="76x76">
     <link href="http://assets.start.me/assets/favicons/favicon-76-8efa3fd36b2b266f5f00a17812486998.png" rel="apple-touch-icon" sizes="76x76">
     <link href="http://assets.start.me/assets/favicons/favicon-120-cb96c40d68329e3d63a7b4e8e358aa01.png" rel="apple-touch-icon-precomposed" sizes="120x120">
@@ -247,82 +246,83 @@
     </div>
     <div id='gridholder'>
         <div class="grid-container" id="grid-container">
-                <div id="firstwall" class="free-wall">
-                </div>
-                <div  id="freewall1" class="free-wall">
-                </div>
+            <div id="firstwall" class="free-wall"></div>
+            <div  id="freewall1" class="free-wall"></div>
         </div>
-        <div id="app-tray" class="text-center col-xs-12">
-            <div class="row">
-                <div id="grid-pagination" class="col-xs-12">
-                    <ul class="list-inline text-center">
-                        <li id="up-full"><span class="fa fa-angle-up"></span></li>
-                        <li id="left-full"> <span class="fa fa-angle-left"></span></li>
-                        <li id="right-full"> <span class="fa fa-angle-right"></span></li>
-                        <li id="down-full"><span class="fa fa-angle-down"></span></li>
-                    </ul>
-                    <ul class='list-inline text-center'>
-                        <li id='apptrayleft'><span class='fa fa-angle-double-left'></span></li>
-                        <li id='apptrayright'><span class='fa fa-angle-double-right'></span></li>
-                        
-                    </ul>
-                </div>
-                <div id='app-drawer-container'>
-                    <div id="app-drawer" class="list-inline free-wall"></div>
-                </div>
+    </div>
+    <div id="app-tray" class="text-center col-xs-12">
+        <div class="row">
+            <div id="grid-pagination" class="col-xs-12">
+                <!-- <div id='scrollbar'>
+                    <div id='scrollbarthumb'></div>
+                </div> -->
+                <ul class="list-inline text-center">
+                    <li id="up-full"><span class="fa fa-angle-up"></span></li>
+                    <li id="left-full"> <span class="fa fa-angle-left"></span></li>
+                    <li id="right-full"> <span class="fa fa-angle-right"></span></li>
+                    <li id="down-full"><span class="fa fa-angle-down"></span></li>
+                </ul>
+                <ul class='list-inline text-center'>
+                    <li id='apptrayleft'><span class='fa fa-angle-double-left'></span></li>
+                    <li id='apptrayright'><span class='fa fa-angle-double-right'></span></li>
+                    
+                </ul>
+            </div>
+            <div id='app-drawer-container'>
+                <div id="app-drawer" class="list-inline free-wall"></div>
             </div>
         </div>
+    </div>
+    <div id="create-folder" class="col-xs-12">
+        <h2 class="text-center"><i class="glyphicon glyphicon-folder-open"></i> Create a Folder</h2>
+    </div>
+    <div id="app-store-modal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1>
+                        <img class="app-icon pull-left" src="img/AppStore_Icon.png" />
+                        App Store
+                    </h1>
+                    <p>Please select the app or widget you would like to add to your homescreen</p>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="row">
+                                <div id="app-nav" class="col-xs-12">
+                                    <div class="row">
+                                        <ul class="nav navbar-nav">
+                                            <li class="active"><a href="#">Apps <span class="sr-only">(current)</span></a></li>
+                                            <li><a href="#">Widgets</a></li>
 
-        <div id="create-folder" class="col-xs-12">
-            <h2 class="text-center"><i class="glyphicon glyphicon-folder-open"></i> Create a Folder</h2>
-        </div>
-        <div id="app-store-modal" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1>
-                            <img class="app-icon pull-left" src="img/AppStore_Icon.png" />
-                            App Store
-                        </h1>
-                        <p>Please select the app or widget you would like to add to your homescreen</p>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <div class="row">
-                                    <div id="app-nav" class="col-xs-12">
-                                        <div class="row">
-                                            <ul class="nav navbar-nav">
-                                                <li class="active"><a href="#">Apps <span class="sr-only">(current)</span></a></li>
-                                                <li><a href="#">Widgets</a></li>
-
-                                            </ul>
-                                            <form id="search-nav" class="navbar-form navbar-right" role="search">
-                                                <div class="form-group">
-                                                    <i class="glyphicon glyphicon-search"></i>
-                                                    <input type="text" class="form-control" placeholder="Search">
-                                                </div>
-                                                <button type="submit" class="btn btn-default">Search</button>
-                                            </form>
-                                        </div>
+                                        </ul>
+                                        <form id="search-nav" class="navbar-form navbar-right" role="search">
+                                            <div class="form-group">
+                                                <i class="glyphicon glyphicon-search"></i>
+                                                <input type="text" class="form-control" placeholder="Search">
+                                            </div>
+                                            <button type="submit" class="btn btn-default">Search</button>
+                                        </form>
                                     </div>
-                                    <div class="col-xs-12">
-                                        <div id="apps-container" class="free-wall">
-                                        </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div id="apps-container" class="free-wall">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <a id="add-app" class="btn btn-primary">Save Changes</a>
-                    </div>
                 </div>
-                <!-- /.modal-content -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <a id="add-app" class="btn btn-primary">Save Changes</a>
+                </div>
             </div>
-            <!-- /.modal-dialog -->
+            <!-- /.modal-content -->
         </div>
+        <!-- /.modal-dialog -->
+    </div>
         <!-- /.modal -->
     </div>
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>

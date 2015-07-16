@@ -12,6 +12,7 @@ var scrolltime = 200;
 var horizontalgridscroll = 100;
 var verticalgridscroll = 100;
 var apptrayscroll = 100;
+var scrollbarscroll;
 //var json = testAjax();
 
 $(window).resize(function(){
@@ -21,6 +22,7 @@ $(window).resize(function(){
     $("#grid-container").css('top', (($("#gridholder").height() - $("#grid-container").height()) / 2));
     $("#grid-container").css('left', (($("#gridholder").width() - $("#grid-container").width()) / 2));
     $("#app-drawer-container").width(Math.floor((($(window).width() - 100) / 100)) * 100);
+    $("#scrollbar").width($(window).width() - 20);
 });
 
 function requestPassword() {
@@ -36,6 +38,15 @@ function requestPassword() {
             console.log("modal closed");
             $("#password-modal").modal("hide");
         }
+    });
+}
+
+function setScrollbar(){
+    var extracolumns = (($("#firstwall").width() - $("#grid-container").width()) / iconwidth);
+    scrollbarscroll = (($("#scrollbar").width() - 20) / (extracolumns + 1));
+    $("#scrollbarthumb").width(scrollbarscroll);
+    $("#grid-container").scroll(function(){
+        $("#scrollbarthumb").css('left', $("#grid-container").scrollLeft());
     });
 }
 
@@ -101,7 +112,7 @@ function freewallAddCells() {
 
 function appTrayAddCells() {
     console.log("Adding cells to app tray");
-    var temp = "<div class='brick {class}' data-position=\"{initialPosition}\" style='width:{width}px; height:{height}px;'>{text}<img src={src} /></div>";
+    var temp = "<div class='brick {class}' link='{link}' data-position=\"{initialPosition}\" style='width:{width}px; height:{height}px;'>{text}<img src={src} /></div>";
 
     var w = 1, h = 1, html = '', limitItem = appTrayJSON.length;
     var rows = [];
@@ -112,6 +123,7 @@ function appTrayAddCells() {
             .replace("{height}", appTrayJSON[i].height)
             .replace("{src}", appTrayJSON[i].src)
             .replace("{class}", appTrayJSON[i].class)
+            .replace("{link}", appTrayJSON[i].link)
             .replace("{initialPosition}", appTrayJSON[i].initialPosition)
             .replace("{text}", appTrayJSON[i].text);
             rows.push(Number(appTrayJSON[i].initialPosition.split('-')[1]));
@@ -401,6 +413,8 @@ function firstWallInit() {
         fixSize: 0,
         cellW: iconwidth,
         cellH: iconheight,
+        gutterX: 30,
+        gutterY: 30,
         //        rightToLeft: true,
         onResize: function () {
             wall.refresh();
@@ -446,12 +460,14 @@ function freewallInit() {
 function appTrayInit() {
     var appTray = new freewall("#app-drawer");
     appTray.reset({
-        draggable: true,
+        draggable: false, /* true, */
         selector: '.brick',
         animate: true,
         fixSize: 0,
         cellW: 100,
         cellH: 100,
+        gutterX: 30,
+        gutterY: 30,
         onResize: function () {
             appTray.refresh();
         }
@@ -464,7 +480,8 @@ function appTrayInit() {
 function staticEventListeners() {
     
     $("#left-full").click(function () {
-       $('#grid-container').animate({ scrollLeft: '+=-' + horizontalgridscroll }, scrolltime, 'easeOutQuad');
+        $('#grid-container').animate({ scrollLeft: '+=-' + horizontalgridscroll }, scrolltime, 'easeOutQuad');
+        //$('#scrollbarthumb').animate({left: '+=-' + scrollbarscroll}, scrolltime, 'easeOutQuad');
     });
     $("#up-full").click(function () {
        $('#grid-container').animate({ scrollTop: '+=-' + verticalgridscroll }, scrolltime, 'easeOutQuad');
@@ -474,6 +491,7 @@ function staticEventListeners() {
     });
     $("#right-full").click(function () {
        $('#grid-container').animate({ scrollLeft: '+=' + horizontalgridscroll}, scrolltime, 'easeOutQuad');
+       //$('#scrollbarthumb').animate({left: '+=' + scrollbarscroll}, scrolltime, 'easeOutQuad');
     });
     $("#apptrayleft").click(function () {
        $('#app-drawer-container').animate({ scrollLeft: '+=-' + apptrayscroll }, scrolltime, 'easeOutQuad');
@@ -531,7 +549,7 @@ $(document).ready(function () {
     $("#gridholder").height($(window).height() - 200);
     $("#grid-container").css('top', (($("#gridholder").height() - $("#grid-container").height()) / 2));
     $("#grid-container").css('left', (($("#gridholder").width() - $("#grid-container").width()) / 2));
-    $("#app-drawer-container").width(Math.floor((($(window).width() - 100) / 100)) * 100);
+    $("#app-drawer-container").width(Math.floor((($(window).width() - ($(window).width() * .1)) / 100)) * 100);
     // requestPassword();
     firstWallAddCells();
     freewallAddCells();
@@ -540,11 +558,12 @@ $(document).ready(function () {
     firstWallInit();
     freewallInit();
     appTrayInit();
-    addMenuToIcons();
+    //addMenuToIcons();
     iconMenuListeners();
     staticEventListeners();
     showFolderModal();
     swipeHandlers();
+    setScrollbar();
 });
 
 
