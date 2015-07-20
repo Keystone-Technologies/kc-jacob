@@ -478,8 +478,9 @@ p {
   margin: auto;
   color: #fff;
   text-align: center;
-  
-  left: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .app-store-icon {
   height: auto;

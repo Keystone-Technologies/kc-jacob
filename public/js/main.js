@@ -25,6 +25,15 @@ $(window).resize(function(){
     $("#scrollbar").width($(window).width() - 20);
 });
 
+$.fn.textWidth = function(text, font) {
+    if (!$.fn.textWidth.fakeEl) $.fn.textWidth.fakeEl = $('<span>').appendTo(document.body);
+    var htmlText = text || this.val() || this.text();
+    htmlText = $.fn.textWidth.fakeEl.text(htmlText).html(); //encode to Html
+    htmlText = htmlText.replace(/\s/g, "&nbsp;"); //replace trailing and leading spaces
+    $.fn.textWidth.fakeEl.html(htmlText).css('font', font || this.css('font'));
+    return $.fn.textWidth.fakeEl.width();
+};
+
 function requestPassword() {
     $("#password-modal").modal({
         backdrop: 'static',
@@ -521,9 +530,10 @@ function staticEventListeners() {
 
 function setLabels(){
     $.each($(".apptext"), function(){
-        $(this).width(iconwidth);
-        $(this).css('left', '-15px');
-        //console.log($(this).siblings('img').width())
+        var parentwidth = $(this).parent().attr('data-width');
+        var title = $(this).text();
+        $(this).width(parentwidth - 6);
+        $(this).css('left', '-12px');
     });
 }
 
