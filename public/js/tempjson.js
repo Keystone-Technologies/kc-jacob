@@ -26,20 +26,15 @@ var firstWallJSON = [
     { "width": 100, "height": 100, "initialPosition":"7-7", "link":"http://www.google.com", "src": "img/GoogleDrive_AppIcon.png", "class": "brick-icon", "text": "Google Drive" },
     { "width": 100, "height": 100, "initialPosition":"6-7", "link":"http://www.google.com", "src": "img/GoogleDocs_AppIcon.png", "class": "brick-icon", "text": "Google Docs" },
     
-    { "width": 100, "height": 100, "initialPosition":"10-23", "link":"http://www.google.com", "src": "img/InformationAppIcon.png", "class": "brick-icon", "text": "Information" },
-    { "width": 100, "height": 100, "initialPosition":"12-20", "link":"http://www.google.com", "src": "img/GoogleBlogs_AppIcon.png", "class": "brick-icon", "text": "Google Blogs" },
-    { "width": 100, "height": 100, "initialPosition":"12-12", "link":"http://www.google.com", "src": "img/FlightsAppIcon.png", "class": "brick-icon", "text": "Flights" },
-    { "width": 100, "height": 100, "initialPosition":"14-17", "link":"http://www.google.com", "src": "img/AdvancedSearch_AppIcon-copy.png", "class": "brick-icon", "text": "Search" },
-    { "width": 100, "height": 100, "initialPosition":"8-21", "link":"http://www.google.com", "src": "img/AmazonPrime_AppIcon.png", "class": "brick-icon", "text": "Amazon Prime" },
     
-    { "width": 100, "height": 100, "initialPosition":"0-20", "link":"http://www.google.com", "src": "img/GoogleMaps_AppIcon.png", "class": "brick-icon", "text": "Google Maps" },
-    { "width": 200, "height": 100, "initialPosition":"1-20", "link":"http://www.google.com", "src": "img/Forum_AppIcon.png", "class": "brick-icon", "text": "Forum" },
-    { "width": 100, "height": 100, "initialPosition":"3-21", "link":"http://www.google.com", "src": "img/GoogleEarth_AppIcon.png", "class": "brick-icon", "text": "Google Earth" },
-    { "width": 100, "height": 100, "initialPosition":"5-22", "link":"http://www.google.com", "src": "img/GoogleFinance_AppIcon.png", "class": "brick-icon", "text": "Google Finance" },
-    { "width": 100, "height": 100, "initialPosition":"6-20", "link":"http://www.google.com", "src": "img/InformationAppIcon.png", "class": "brick-icon", "text": "Information" },
-    { "width": 200, "height": 100, "initialPosition":"7-24", "link":"http://www.google.com", "src": "img/GoogleBlogs_AppIcon.png", "class": "brick-icon", "text": "Google Blogs" },
-    { "width": 200, "height": 100, "initialPosition":"9-23", "link":"http://www.google.com", "src": "img/FlightsAppIcon.png", "class": "brick-icon", "text": "Flights" },
-    { "width": 100, "height": 100, "initialPosition":"10-23", "link":"http://www.google.com", "src": "img/AdvancedSearch_AppIcon-copy.png", "class": "brick-icon", "text": "Search" }
+    { "width": 100, "height": 100, "initialPosition":"10-7", "link":"http://www.google.com", "src": "img/InformationAppIcon.png", "class": "brick-icon", "text": "Information" },
+    { "width": 100, "height": 100, "initialPosition":"12-8", "link":"http://www.google.com", "src": "img/GoogleBlogs_AppIcon.png", "class": "brick-icon", "text": "Google Blogs" },
+    { "width": 100, "height": 100, "initialPosition":"12-12", "link":"http://www.google.com", "src": "img/FlightsAppIcon.png", "class": "brick-icon", "text": "Flights" },
+    { "width": 100, "height": 100, "initialPosition":"14-11", "link":"http://www.google.com", "src": "img/AdvancedSearch_AppIcon-copy.png", "class": "brick-icon", "text": "Search" },
+    { "width": 100, "height": 100, "initialPosition":"8-3", "link":"http://www.google.com", "src": "img/AmazonPrime_AppIcon.png", "class": "brick-icon", "text": "Amazon Prime" },
+    
+    { "width": 200, "height": 100, "initialPosition":"9-12", "link":"http://www.google.com", "src": "img/FlightsAppIcon.png", "class": "brick-icon", "text": "Flights" },
+    { "width": 100, "height": 100, "initialPosition":"10-11", "link":"http://www.google.com", "src": "img/AdvancedSearch_AppIcon-copy.png", "class": "brick-icon", "text": "Search" }
     
 ];
 

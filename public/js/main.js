@@ -13,16 +13,33 @@ var horizontalgridscroll = 100;
 var verticalgridscroll = 100;
 var apptrayscroll = 100;
 var scrollbarscroll;
-//var json = testAjax();
+var gridcontainerzoomwidth;
+
+var screenheight = 900;
+var screenwidth = 1440;
 
 $(window).resize(function(){
-    $("#grid-container").height((Math.floor(($(window).height() - 200) / 100)) * 100);
-    $("#grid-container").width(Math.floor(($(window).width() / 100)) * 100);
-    $("#gridholder").height($(window).height() - 200);
-    $("#grid-container").css('top', (($("#gridholder").height() - $("#grid-container").height()) / 2));
-    $("#grid-container").css('left', (($("#gridholder").width() - $("#grid-container").width()) / 2));
-    $("#app-drawer-container").width(Math.floor((($(window).width() - 100) / 100)) * 100);
-    $("#scrollbar").width($(window).width() - 20);
+    
+    if ($(window).width() <= screenwidth){
+        $("#gridholder").height($(window).height() - 200);
+        $("#grid-container").css('transform', 'scale(1)');
+        $("#grid-container").height(Math.floor($("#gridholder").height() / 100) * 100);
+        $("#grid-container").width(Math.floor(($(window).width() / 100)) * 100);
+        $("#grid-container").css('top', (($("#gridholder").height() - $("#grid-container").height()) / 2));
+        $("#grid-container").css('left', (($("#gridholder").width() - $("#grid-container").width()) / 2));
+        $("#app-drawer-container").width(Math.floor((($(window).width() - 100) / 100)) * 100);
+        $("#scrollbar").width($(window).width() - 20);
+    }
+    else {
+        var scale = (($(window).width() - screenwidth) / screenwidth);
+        $("#grid-container").width(screenwidth);
+        $("#grid-container").height((Math.floor($("#gridholder").height() / (iconheight * (scale + 1))) * (iconheight * (scale + 1))) / (scale + 1));
+        $("#grid-container").css('left', (($("#gridholder").width() - ($("#firstwall").width() * (scale + 1))) / 2));
+        console.log(((Math.floor(($(window).height() - 200) / 100)) * 100));
+        //$("#gridholder").height(($(window).height() - 200) - (scale * $(window).height()));
+        $("#grid-container").css('transform', 'scale(' + ((scale + 1).toString()) + ')');
+        $("#grid-container").css('transform-origin', "0 0");
+    }
 });
 
 $.fn.textWidth = function(text, font) {
@@ -208,7 +225,7 @@ function firstWallAddCells() {
     //gridheight = ((Math.max.apply(null, columns) + 1) * 100);
     //gridwidth = ((Math.max.apply(null, rows) + 1) * 100);
     $("#firstwall").css("height", gridheight);
-    if (gridwidth > 1820){
+    if (gridwidth > screenwidth){
         $("#firstwall").css("width", gridwidth);
     }
     $("#firstwall").html(html);
@@ -531,8 +548,8 @@ function setLabels(){
     $.each($(".apptext"), function(){
         var parentwidth = $(this).parent().attr('data-width');
         var title = $(this).text();
-        $(this).width(parentwidth - 6);
-        $(this).css('left', '-12px');
+        $(this).width(parentwidth - 6); //HARDCODED
+        $(this).css('left', '-12px');   //HARDCODED
     });
 }
 

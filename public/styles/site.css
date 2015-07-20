@@ -1,4 +1,10 @@
+/*@media (min-width: 1440px){
+  #home {
+  transform: scale(2);
+  transform-origin: 0 0;
+}
 
+} */
 
 * {
   -webkit-touch-callout: none;
@@ -92,6 +98,7 @@ html {
   overflow: auto;
   overflow-x: hidden;
   height: auto;
+  
   /* outline: solid 1px #c3c3c3; */
   /* box-shadow: 0 2px 0 #c3c3c3; */
 }
@@ -109,6 +116,7 @@ html {
   display: none;
 }
 #firstwall {
+  min-width: 1400px;
   margin: 0px 0px 0px 0px;
   float: left;
   display: inline-block;
