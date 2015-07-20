@@ -1,9 +1,4 @@
-@media only screen and (min-width: 1401px) {
-  #home{
-    /*background-color: #000000; */
-  }
 
-}
 
 * {
   -webkit-touch-callout: none;
@@ -95,6 +90,7 @@ html {
   position: relative;
   width: 1440px;
   overflow: auto;
+  overflow-x: hidden;
   height: auto;
   /* outline: solid 1px #c3c3c3; */
   /* box-shadow: 0 2px 0 #c3c3c3; */
@@ -351,11 +347,10 @@ html {
 #home #app-tray #app-drawer {
   /*background: rgba(0, 0, 0, 0.1); */
   border-radius: 4px;
-  height: 106px;
   margin: 0 auto;
 }
 #app-drawer-container {
-  height: auto;
+  height: 100px;
   overflow-x: scroll;
   margin: auto;
 }

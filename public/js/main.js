@@ -121,7 +121,8 @@ function freewallAddCells() {
 
 function appTrayAddCells() {
     console.log("Adding cells to app tray");
-    var temp = "<div class='brick {class}' link='{link}' data-position=\"{initialPosition}\" style='width:{width}px; height:{height}px;'>{text}<img src={src} /></div>";
+    // WITH TEXT LABELS var temp = "<div class='brick {class}' link='{link}' data-position=\"{initialPosition}\" style='width:{width}px; height:{height}px;'><img src={src} /><p class='apptext'>{text}</p></div>";
+    var temp = "<div class='brick {class}' link='{link}' data-position=\"{initialPosition}\" style='width:{width}px; height:{height}px;'><img src={src} /></div>"; // WITHOUT TEXT LABELS
 
     var w = 1, h = 1, html = '', limitItem = appTrayJSON.length;
     var rows = [];
@@ -391,8 +392,6 @@ function iconMenuListeners() {
         $(this).parentsUntil($(".free-wall")).remove();
         populateAddTo();
     });
-    freewallInit();
-    appTrayInit();
     console.log("menu listeners added");
 };
 
