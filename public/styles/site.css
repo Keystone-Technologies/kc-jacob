@@ -95,8 +95,8 @@ html {
 #home .grid-container {
   position: relative;
   width: 1440px;
-  overflow: auto;
-  overflow-x: hidden;
+  overflow-y: auto;
+  overflow-x: auto;
   height: auto;
   
   /* outline: solid 1px #c3c3c3; */
@@ -360,7 +360,12 @@ html {
 #app-drawer-container {
   height: 100px;
   overflow-x: scroll;
-  margin: auto;
+  position: relative;
+}
+
+#row {
+  width: 100%;
+  margin: 0px;
 }
 #home #app-tray #app-drawer .brick-icon {
   float: left;

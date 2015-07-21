@@ -18,28 +18,81 @@ var gridcontainerzoomwidth;
 var screenheight = 900;
 var screenwidth = 1440;
 
-$(window).resize(function(){
-    
+$(document).ready(function () {
+    console.log("width " + (($("#row").width() - $("#app-drawer-container").width()) / 2).toString())
+    console.log("Window: " + $(window).width() + " x " + $(window).height());
+    console.log("Document: " + $(document).width() + " x " + $(document).height());
+    console.log("Screen: " + screen.width + " x " + screen.height);
+    console.log("Pixel ratio: " + (window).devicePixelRatio);
+    console.log("Calculated screen width: " + (screen.width * (window).devicePixelRatio));
+    console.log("Calculated screen height: " + (screen.height * (window).devicePixelRatio));
+    $("#gridholder").height($(window).height() - 200);
     if ($(window).width() <= screenwidth){
-        $("#gridholder").height($(window).height() - 200);
+        $("#app-drawer-container").width(Math.floor((($(window).width() - ($(window).width() * .1)) / 100)) * 100);
+        $("#app-drawer-container").css('transform', 'scale(1)');
+        $("#app-drawer-container").css('left', (($("#row").width() - $("#app-drawer-container").width()) / 2));
+        $("#grid-container").height(Math.floor($("#gridholder").height() / 100) * 100);
+        $("#grid-container").width(Math.floor(($(window).width() / 100)) * 100);
+        $("#grid-container").css('top', (($("#gridholder").height() - $("#grid-container").height()) / 2));
+        $("#grid-container").css('left', (($("#gridholder").width() - $("#grid-container").width()) / 2));
+        $("#grid-container").css('transform', 'scale(1)');
+    }
+    else {
+        var scale = (($(window).width() - screenwidth) / screenwidth);
+        $("#app-drawer-container").width($(window).width() - ($(window).width() * .1));
+        $("#app-drawer-container").css('left', (($("#row").width() - ($("#app-drawer-container").width() * (scale +1))) / 2));
+        $("#app-drawer-container").css('transform', 'scale(' + ((scale + 1).toString()) + ')');
+        $("#app-drawer-container").css('transform-origin', "0 0");
+        $("#grid-container").width(screenwidth);
+        $("#grid-container").height(((Math.floor($("#gridholder").height() / (iconheight * (scale + 1)))) * (iconheight * (scale + 1))) / (scale + 1));
+        $("#grid-container").css('left', (($("#gridholder").width() - ($("#firstwall").width() * (scale + 1))) / 2));
+        $("#grid-container").css('transform', 'scale(' + ((scale + 1).toString()) + ')');
+        $("#grid-container").css('transform-origin', "0 0");
+    }
+    // requestPassword();
+    firstWallAddCells();
+    freewallAddCells();
+    appStoreAddCells();
+    appTrayAddCells();
+    firstWallInit();
+    freewallInit();
+    appTrayInit();
+    //addMenuToIcons();
+    setLabels();
+    iconMenuListeners();
+    staticEventListeners();
+    showFolderModal();
+    //swipeHandlers();
+    setScrollbar();
+    console.log("rowwidth" + ($("#row").width()));
+});
+
+$(window).resize(function(){
+    $("#gridholder").height($(window).height() - 200);
+    if ($(window).width() <= screenwidth){
+        $("#app-drawer-container").css('transform', 'scale(1)');
         $("#grid-container").css('transform', 'scale(1)');
         $("#grid-container").height(Math.floor($("#gridholder").height() / 100) * 100);
         $("#grid-container").width(Math.floor(($(window).width() / 100)) * 100);
         $("#grid-container").css('top', (($("#gridholder").height() - $("#grid-container").height()) / 2));
         $("#grid-container").css('left', (($("#gridholder").width() - $("#grid-container").width()) / 2));
-        $("#app-drawer-container").width(Math.floor((($(window).width() - 100) / 100)) * 100);
+        $("#app-drawer-container").width(Math.floor((($(window).width() - ($(window).width() * .1)) / 100)) * 100);
+        $("#app-drawer-container").css('left', (($("#row").width() - $("#app-drawer-container").width()) / 2));
         $("#scrollbar").width($(window).width() - 20);
     }
     else {
         var scale = (($(window).width() - screenwidth) / screenwidth);
+        $("#app-drawer-container").width(($(window).width() - ($(window).width() * .1)) / (scale + 1));
+        $("#app-drawer-container").css('transform', 'scale(' + ((scale + 1).toString()) + ')');
+        $("#app-drawer-container").css('transform-origin', "0 0");
+        $("#app-drawer-container").css('left', (($("#row").width() - ($("#app-drawer-container").width() * (scale +1))) / 2));
         $("#grid-container").width(screenwidth);
-        $("#grid-container").height((Math.floor($("#gridholder").height() / (iconheight * (scale + 1))) * (iconheight * (scale + 1))) / (scale + 1));
+        $("#grid-container").height(((Math.floor($("#gridholder").height() / (iconheight * (scale + 1)))) * (iconheight * (scale + 1))) / (scale + 1));
         $("#grid-container").css('left', (($("#gridholder").width() - ($("#firstwall").width() * (scale + 1))) / 2));
-        console.log(((Math.floor(($(window).height() - 200) / 100)) * 100));
-        //$("#gridholder").height(($(window).height() - 200) - (scale * $(window).height()));
         $("#grid-container").css('transform', 'scale(' + ((scale + 1).toString()) + ')');
         $("#grid-container").css('transform-origin', "0 0");
     }
+    
 });
 
 $.fn.textWidth = function(text, font) {
@@ -576,30 +629,6 @@ function swipeHandlers(){
         console.log("Swiped down");
     });
 }
-
-$(document).ready(function () {
-    $("#grid-container").height((Math.floor(($(window).height() - 200) / 100)) * 100);
-    $("#grid-container").width(Math.floor(($(window).width() / 100)) * 100);
-    $("#gridholder").height($(window).height() - 200);
-    $("#grid-container").css('top', (($("#gridholder").height() - $("#grid-container").height()) / 2));
-    $("#grid-container").css('left', (($("#gridholder").width() - $("#grid-container").width()) / 2));
-    $("#app-drawer-container").width(Math.floor((($(window).width() - ($(window).width() * .1)) / 100)) * 100);
-    // requestPassword();
-    firstWallAddCells();
-    freewallAddCells();
-    appStoreAddCells();
-    appTrayAddCells();
-    firstWallInit();
-    freewallInit();
-    appTrayInit();
-    //addMenuToIcons();
-    setLabels();
-    iconMenuListeners();
-    staticEventListeners();
-    showFolderModal();
-    swipeHandlers();
-    setScrollbar();
-});
 
 
 //Archived functions for later stages of development
