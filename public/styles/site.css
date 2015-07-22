@@ -25,8 +25,6 @@ html {
   height: 100%;
 }
 
-
-
 .banner {
   position: relative;
   display: none;
@@ -700,4 +698,28 @@ p {
 .rss-feed li a, .rss-feed-small li a {
   color: #7eb0db;
   display: block;
+}
+
+.iframe {
+  height: 100%;
+  max-height: 200px;
+  min-height: 200px;
+  overflow-y: auto;
+  border: 0px;
+}
+
+.iframe-small {
+  max-height: 100px;
+  min-height: 100;
+  overflow-y: auto;
+  border: 0px;
+}
+
+iframe::-webkit-scrollbar {
+  display: inline-block;
+}
+
+iframe::-webkit-scrollbar-thumb{
+  background-color: #263c4b;
+  border-radius: 8px;
 }
