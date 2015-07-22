@@ -39,7 +39,8 @@ $(document).ready(function () {
     }
     else {
         var scale = (($(window).width() - screenwidth) / screenwidth);
-        $("#app-drawer-container").width($(window).width() - ($(window).width() * .1));
+        console.log("appdrawer width " + ($(window).width() * .1));
+        $("#app-drawer-container").width(($(window).width() - ($(window).width() * .1)) / (scale + 1));
         $("#app-drawer-container").css('left', (($("#row").width() - ($("#app-drawer-container").width() * (scale +1))) / 2));
         $("#app-drawer-container").css('transform', 'scale(' + ((scale + 1).toString()) + ')');
         $("#app-drawer-container").css('transform-origin', "0 0");
@@ -57,11 +58,13 @@ $(document).ready(function () {
     firstWallInit();
     freewallInit();
     appTrayInit();
+    //folderModalAddCells();
+    //folderModalInit();
+    showFolderModal();
     //addMenuToIcons();
     setLabels();
     iconMenuListeners();
     staticEventListeners();
-    showFolderModal();
     //swipeHandlers();
     setScrollbar();
     console.log("rowwidth" + ($("#row").width()));
@@ -91,6 +94,7 @@ $(window).resize(function(){
         $("#grid-container").css('left', (($("#gridholder").width() - ($("#firstwall").width() * (scale + 1))) / 2));
         $("#grid-container").css('transform', 'scale(' + ((scale + 1).toString()) + ')');
         $("#grid-container").css('transform-origin', "0 0");
+        $("#grid-container").css('top', '0');
     }
     
 });
@@ -129,12 +133,74 @@ function setScrollbar(){
     });
 }
 
+function folderModalInit() {
+    $("#foldermodalcontent").width($(window).width() / 2);
+    $("#foldermodal").width((Math.floor($("#foldermodalcontent").width() / 100)) * 100);
+    $("#foldermodal").height(($("#foldermodal").width() / 5) * 3);
+    $("#foldermodalcontent").height($("#foldermodal").height() + 100);
+   
+    var foldericonwidth = ($("#foldermodal").width() / 5);
+    
+    var foldericonheight = foldericonwidth;
+    console.log("foldermodal: " + $("#foldermodal").width() + " x " + $("#foldermodal").height());
+    console.log("icon " + foldericonwidth + " x " + foldericonheight);
+    var foldergrid = new freewall("#foldermodal");
+    foldergrid.reset({
+        // draggable: true,
+        selector: '.brick',
+        animate: true,
+        fixSize: 0,
+        cellW: foldericonwidth,
+        cellH: foldericonheight,
+        gutterX: 30,
+        gutterY: 30,
+        onResize: function () {
+            foldergrid.fitZone();
+        }
+    });
+    foldergrid.fitZone();
+    $(".folder-brick-icon").click(function(){
+        window.location.href = $(this).attr("link");
+    });
+    console.log("Folder grid loaded");
+}
+
+function folderModalAddCells(folderid){
+    console.log("folderid" + folderid)
+    var temp = "<div class='brick {class}' link=\"{link}\" data-position=\"{initialPosition}\" style='width:{width}px; height:{height}px;' ><img src={src} /><p class='folderapptext'>{text}</p></div>";
+    //WITHOUT LABELSvar temp = "<div class='brick {class}' link=\"{link}\" data-position=\"{initialPosition}\" style='width:{width}px; height:{height}px;' ><img src={src} /></div>";
+    var folderJSON = window['folder' + folderid + 'JSON'];
+    var w = 1, h = 1, html = '', limitItem = folderJSON.length;
+
+    for (var i = 0; i < limitItem; ++i) {
+        html += temp
+            .replace(/\{width\}/, folderJSON[i].width)
+            .replace("{height}", folderJSON[i].height)
+            .replace("{src}", folderJSON[i].src)
+            .replace("{link}", folderJSON[i].link)
+            .replace("{class}", folderJSON[i].class)
+            .replace("{initialPosition}", folderJSON[i].initialPosition)
+            .replace("{text}", folderJSON[i].text);
+    }
+
+    $("#foldermodal").html(html);
+}
+
 function showFolderModal() {
     $(".folder").click(function () {
-        $currentFolder = $(this);
+        folderModalAddCells($(this).attr('folder-id'));
+        folderModalInit();
+        $.each($(".folderapptext"), function(){
+            var parentwidth = $(this).parent().width();
+            $(this).width(parentwidth - 6); //HARDCODED
+            $(this).css('padding-left', '18px');   //HARDCODED
+        });
         $(".folder-modal").modal('show');
-        startingName = $currentFolder.clone().children().remove().end().text();
+        startingName = $(this).children("p").text();
         $(".folder-name").html(startingName);
+        
+        /*
+        $currentFolder = $(this);
         $(".folder-name").on("dblclick", function () {
             startingName = $currentFolder.clone().children().remove().end().text();
             $(this).addClass("hidden");
@@ -161,7 +227,7 @@ function showFolderModal() {
                         // resetVariables();
                     }
                 });
-        });
+        }); */
     });
 }
 
@@ -219,7 +285,6 @@ function appTrayAddCells() {
     console.log(rowmax);
     apptraywidth = ((rowmax + 1) * iconwidth);
     $("#app-drawer").width(apptraywidth);
-    console.log("appdrawer width: " + apptraywidth)
     $("#app-drawer").html(html);
     $(".rss").children("img").remove();
 }
@@ -227,7 +292,7 @@ function appTrayAddCells() {
 function firstWallAddCells() {
     console.log("Adding cells to app tray");
     //var temp = "<div class='brick {class}' link=\"{link}\" data-position=\"{initialPosition}\" style='width:{width}px; height:{height}px;' oncontextmenu=\"javascript:iconRightClick($(this));return false;\">{text}<img src={src} /></div>";
-    var temp = "<div class='brick {class}' link=\"{link}\" data-position=\"{initialPosition}\" style='width:{width}px; height:{height}px;' ><img src={src} /><p class='apptext'>{text}</p></div>";
+    var temp = "<div class='brick {class}' link=\"{link}\" data-position=\"{initialPosition}\" folder-id=\"{folder-id}\" style='width:{width}px; height:{height}px;' ><img src={src} /><p class='apptext'>{text}</p></div>";
     
     var w = 1, h = 1, html = '', limitItem = firstWallJSON.length;
     var columns = [];
@@ -243,7 +308,8 @@ function firstWallAddCells() {
             .replace("{class}", firstWallJSON[i].class)
             .replace("{link}", firstWallJSON[i].link)
             .replace("{initialPosition}", firstWallJSON[i].initialPosition)
-            .replace("{text}", firstWallJSON[i].text);
+            .replace("{text}", firstWallJSON[i].text)
+            .replace("{folder-id}", firstWallJSON[i].folderid);
             columns.push(Number(firstWallJSON[i].initialPosition.split('-')[0]));
             heights.push(Number(firstWallJSON[i].height));
             rows.push(Number(firstWallJSON[i].initialPosition.split('-')[1]));
@@ -600,7 +666,6 @@ function staticEventListeners() {
 function setLabels(){
     $.each($(".apptext"), function(){
         var parentwidth = $(this).parent().attr('data-width');
-        var title = $(this).text();
         $(this).width(parentwidth - 6); //HARDCODED
         $(this).css('left', '-12px');   //HARDCODED
     });

@@ -3,15 +3,15 @@ var firstWallJSON = [
     { "width": 400, "height": 300, "initialPosition":"0-0", "link":"http://www.google.com", "src": "", "class": "rss", "text": "<div class=\"widget text-center\"><h2><span class=\"glyphicon glyphicon-cutlery\"></span>Food Menu</h2><div id=\"food-rss\" class=\"rss-feed\"></div></div>" },
     { "width": 400, "height": 200, "initialPosition":"3-0", "link":"http://www.google.com", "src": "", "class": "rss", "text": "<div class=\"widget text-center\"><h2><span class=\"glyphicon glyphicon-calendar\"></span>Community Events</h2><div id=\"finance-rss\" class=\"rss-feed-small\"></div></div>" },
     { "width": 400, "height": 200, "initialPosition":"3-10", "link":"http://www.google.com", "src": "", "class": "rss", "text": "<div class=\"widget text-center\"><h2><span class=\"glyphicon glyphicon-play-circle\"></span>Games</h2><div id=\"health-rss\" class=\"rss-feed-small\"></div></div>" },
-    { "width": 200, "height": 100, "initialPosition":"0-5", "link":"http://www.google.com", "src": "img/folder.png", "class": "folder", "text": "My Home" },
-    { "width": 200, "height": 100, "initialPosition":"0-7", "link":"http://www.google.com", "src": "img/folder.png", "class": "folder", "text": "My Health" },
-    { "width": 100, "height": 100, "initialPosition":"1-5", "link":"http://www.google.com", "src": "img/folder.png", "class": "folder", "text": "My Office" },
-    { "width": 200, "height": 200, "initialPosition":"1-6", "link":"http://www.google.com", "src": "img/folder.png", "class": "folder", "text": "My Connect" },
-    { "width": 100, "height": 100, "initialPosition":"1-8", "link":"http://www.google.com", "src": "img/folder.png", "class": "folder", "text": "My Home" },
-    { "width": 100, "height": 100, "initialPosition":"2-5", "link":"http://www.google.com", "src": "img/folder.png", "class": "folder", "text": "My Finances" },
-    { "width": 100, "height": 100, "initialPosition":"2-8", "link":"http://www.google.com", "src": "img/folder.png", "class": "folder", "text": "My Faith" },
-    { "width": 200, "height": 100, "initialPosition":"3-5", "link":"http://www.google.com", "src": "img/folder.png", "class": "folder", "text": "My Photos & Videos" },
-    { "width": 200, "height": 100, "initialPosition":"3-7", "link":"http://www.google.com", "src": "img/folder.png", "class": "folder", "text": "My News & Entertainment" },
+    { "width": 200, "height": 100, "initialPosition":"0-5", "link":"http://www.google.com", "src": "img/folder.png", "class": "folder", "folderid": 0, "text": "My Home" },
+    { "width": 200, "height": 100, "initialPosition":"0-7", "link":"http://www.google.com", "src": "img/folder.png", "class": "folder", "folderid": 1, "text": "My Health" },
+    { "width": 100, "height": 100, "initialPosition":"1-5", "link":"http://www.google.com", "src": "img/folder.png", "class": "folder", "folderid": 2, "text": "My Office" },
+    { "width": 200, "height": 200, "initialPosition":"1-6", "link":"http://www.google.com", "src": "img/folder.png", "class": "folder", "folderid": 3, "text": "My Connect" },
+    { "width": 100, "height": 100, "initialPosition":"1-8", "link":"http://www.google.com", "src": "img/folder.png", "class": "folder", "folderid": 4, "text": "My Home" },
+    { "width": 100, "height": 100, "initialPosition":"2-5", "link":"http://www.google.com", "src": "img/folder.png", "class": "folder", "folderid": 5, "text": "My Finances" },
+    { "width": 100, "height": 100, "initialPosition":"2-8", "link":"http://www.google.com", "src": "img/folder.png", "class": "folder", "folderid": 6, "text": "My Faith" },
+    { "width": 200, "height": 100, "initialPosition":"3-5", "link":"http://www.google.com", "src": "img/folder.png", "class": "folder", "folderid": 7, "text": "My Photos & Videos" },
+    { "width": 200, "height": 100, "initialPosition":"3-7", "link":"http://www.google.com", "src": "img/folder.png", "class": "folder", "folderid": 8, "text": "My News & Entertainment" },
     
     { "width": 100, "height": 100, "initialPosition":"15-0", "link":"http://www.google.com", "src": "img/GooglePhotos_AppIcon.png", "class": "brick-icon", "text": "Google Photos" },
     { "width": 100, "height": 100, "initialPosition":"15-3", "link":"http://www.google.com", "src": "img/GooglePasswords_AppIcon.png", "class": "brick-icon", "text": "Google Passwords" },
@@ -456,6 +456,63 @@ var tempJSON = [
     { "width": 100, "height": 100, "initialPosition":"", "link":"http://www.google.com", "src": "img/GamesOther_AppIcon.png", "class": "brick-icon", "text": "" }
 ];
 
+var folder0JSON = [
+    { "width": 100, "height": 100, "initialPosition":"0-0", "link":"http://www.nest.com", "src": "img/Nest.png", "class": "folder-brick-icon", "text": "Nest Thermostat" },
+    ];
+    
+var folder1JSON = [
+    { "width": 100, "height": 100, "initialPosition":"0-0", "link":"http://www.webmd.com", "src": "img/WebMD_AppIcon.png", "class": "folder-brick-icon", "text": "WebMD" },
+    { "width": 100, "height": 100, "initialPosition":"0-1", "link":"http://www.mediprocity.com", "src": "img/Mediprocity_AppIcon.png", "class": "folder-brick-icon", "text": "Secure Messaging" },
+    ];
+    
+var folder2JSON = [
+    { "width": 100, "height": 100, "initialPosition":"0-0", "link":"http://www.google.com/calendar", "src": "img/GoogleCalendar_AppIcon.png", "class": "folder-brick-icon", "text": "Calendar" },
+    { "width": 100, "height": 100, "initialPosition":"0-1", "link":"http://www.drive.google.com", "src": "img/GoogleDrive_AppIcon.png", "class": "folder-brick-icon", "text": "Storage" },
+    { "width": 100, "height": 100, "initialPosition":"0-2", "link":"http://www.google.com", "src": "img/GoogleDocs_AppIcon.png", "class": "folder-brick-icon", "text": "Google Docs" },
+
+    ];
+    
+var folder3JSON = [
+    { "width": 100, "height": 100, "initialPosition":"0-0", "link":"http://www.outlook.com", "src": "img/Email.png", "class": "folder-brick-icon", "text": "Email" },
+    { "width": 100, "height": 100, "initialPosition":"0-1", "link":"http://www.youtube.com", "src": "img/YouTubeAppIcon.png", "class": "folder-brick-icon", "text": "YouTube" },
+    { "width": 100, "height": 100, "initialPosition":"0-2", "link":"http://www.webmd.com", "src": "img/WebMD_AppIcon.png", "class": "folder-brick-icon", "text": "WebMD" },
+    { "width": 100, "height": 100, "initialPosition":"0-3", "link":"http://www.twitter.com", "src": "img/TwitterAppIcon.png", "class": "folder-brick-icon", "text": "Twitter" },
+    { "width": 100, "height": 100, "initialPosition":"0-4", "link":"http://www.kayak.com", "src": "img/FlightsAppIcon.png", "class": "folder-brick-icon", "text": "Flights" },
+    { "width": 100, "height": 100, "initialPosition":"1-0", "link":"http://www.google.com", "src": "img/TheSecret_AppIcon.png", "class": "folder-brick-icon", "text": "Secrets" },
+    { "width": 100, "height": 100, "initialPosition":"1-1", "link":"http://www.spotify.com", "src": "img/SpotifyAppIcon.png", "class": "folder-brick-icon", "text": "Spotify" },
+    { "width": 100, "height": 100, "initialPosition":"1-2", "link":"http://www.skype.com", "src": "img/Skype_AppIcon.png", "class": "folder-brick-icon", "text": "Skype" },
+    { "width": 100, "height": 100, "initialPosition":"1-3", "link":"http://www.google.com", "src": "img/SettingsAppIcon.png", "class": "folder-brick-icon", "text": "Settings" },
+    { "width": 100, "height": 100, "initialPosition":"1-4", "link":"http://www.blogger.com", "src": "img/GoogleBlogs_AppIcon.png", "class": "folder-brick-icon", "text": "Google Blogs" },
+    { "width": 100, "height": 100, "initialPosition":"2-0", "link":"http://www.cnn.com", "src": "img/RSSAppIcon.png", "class": "folder-brick-icon", "text": "RSS" },
+    { "width": 100, "height": 100, "initialPosition":"2-1", "link":"http://www.pinterest.com", "src": "img/PinterestAppIcon.png", "class": "folder-brick-icon", "text": "Pinterest" },
+    ];
+
+var folder4JSON = [
+    { "width": 100, "height": 100, "initialPosition":"0-0", "link":"http://www.nest.com", "src": "img/Nest.png", "class": "folder-brick-icon", "text": "Nest Thermostat" },
+    ];
+    
+var folder5JSON = [
+    { "width": 100, "height": 100, "initialPosition":"0-0", "link": "http://www.finance.google.com", "src": "img/GoogleFinance_AppIcon.png", "class": "folder-brick-icon", "text": "Google Finance" },
+    { "width": 100, "height": 100, "initialPosition":"0-1", "link": "wallet.google.com", "src": "img/GoogleWallet_AppIcon.png", "class": "folder-brick-icon", "text": "Google Wallet" },
+    ];
+    
+var folder6JSON = [
+    { "width": 100, "height": 100, "initialPosition":"0-0", "link": "https://holybible.com/", "src": "img/HolyBible_AppIcon.png", "class": "folder-brick-icon", "text": "Holy Bible" },
+    ];
+    
+var folder7JSON = [
+    { "width": 100, "height": 100, "initialPosition":"0-0", "link":"http://www.photos.google.com", "src": "img/GooglePhotos_AppIcon.png", "class": "folder-brick-icon", "text": "Google Photos" },
+    { "width": 100, "height": 100, "initialPosition":"0-1", "link":"http://www.instagram.com", "src": "img/Instagram_AppIcon.png", "class": "folder-brick-icon", "text": "Instagram" },
+    { "width": 100, "height": 100, "initialPosition":"0-2", "link":"http://www.youtube.com", "src": "img/YouTubeAppIcon.png", "class": "folder-brick-icon", "text": "YouTube" },
+    { "width": 100, "height": 100, "initialPosition":"0-3", "link":"http://www.flickr.com", "src": "img/Flickr_AppIcon.png", "class": "folder-brick-icon", "text": "Flickr" },
+    ];
+    
+var folder8JSON = [
+    { "width": 100, "height": 100, "initialPosition":"0-0", "link":"http://www.netflix.com", "src": "img/Netflix_AppIcon.png", "class": "folder-brick-icon", "text": "Netflix" },
+    { "width": 100, "height": 100, "initialPosition":"0-1", "link":"http://www.spotify.com", "src": "img/SpotifyAppIcon.png", "class": "folder-brick-icon", "text": "Spotify" },
+    { "width": 100, "height": 100, "initialPosition":"0-2", "link":"http://www.pandora.com", "src": "img/Pandora_AppIcon.png", "class": "folder-brick-icon", "text": "Pandora" },
+    ];
+    
 var appTrayJSON = [
     //{ "width": 100, "height": 100, "initialPosition":"0-0", "src": "img/AppStore_Icon.png", "class": "app-store-icon", "text": "" },
     { "width": 100, "height": 100, "initialPosition":"0-0","src": "img/InformationAppIcon.png", "class": "", "text": "" },

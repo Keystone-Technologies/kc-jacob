@@ -132,16 +132,28 @@ html {
   background: #23789E;
 }
 
+#foldermodal {
+  width: 100%;
+  height: 500px;
+  padding: 0px;
+  margin: 10px auto;
+  
+}
 #home .grid-container .free-wall .folder input {
   max-width: 95%;
 }
 #home .grid-container .free-wall .brick {
   cursor: pointer;
 }
-#home .grid-container .free-wall .brick img {
+.brick img {
   height: 100%;
   margin: 0 auto;
   width: auto;
+}
+
+#foldermodal .brick img {
+  width: 100%;
+  height: 100%;
 }
 #home .grid-container .free-wall .brick .icon-menu {
   bottom: 5px;
@@ -356,6 +368,7 @@ html {
   /*background: rgba(0, 0, 0, 0.1); */
   border-radius: 4px;
   margin: 0 auto;
+  position: relative;
 }
 #app-drawer-container {
   height: 100px;
@@ -371,6 +384,21 @@ html {
   float: left;
   width: 100px;
   cursor: pointer;
+}
+
+.folder-brick-icon {
+  cursor: pointer;
+  padding-bottom: 20px;
+}
+
+#foldermodaldialog {
+  width: 50%;
+  min-width: 500px;
+  border-radius: 25px;
+}
+
+#foldermodalcontent {
+  padding-bottom: 20px;
 }
 .hidden {
   display: none;
@@ -485,6 +513,18 @@ p {
   padding: 0px;
   margin: auto;
   color: #fff;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.folderapptext {
+  position: relative;
+  width: 100px;
+  padding: 0px;
+  margin: 0px;
+  color: #000;
   text-align: center;
   overflow: hidden;
   text-overflow: ellipsis;
