@@ -18,6 +18,9 @@ var gridcontainerzoomwidth;
 var screenheight = 900;
 var screenwidth = 1440;
 
+$(window).load(function(){
+    $("#loadingcover").remove();
+})
 $(document).ready(function () {
     console.log("width " + (($("#row").width() - $("#app-drawer-container").width()) / 2).toString())
     console.log("Window: " + $(window).width() + " x " + $(window).height());
@@ -67,7 +70,6 @@ $(document).ready(function () {
     staticEventListeners();
     //swipeHandlers();
     setScrollbar();
-    console.log("rowwidth" + ($("#row").width()));
 });
 
 $(window).resize(function(){
