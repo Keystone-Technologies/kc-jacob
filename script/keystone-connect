@@ -2,6 +2,7 @@
 
 use strict;
 use warnings;
+use Mojolicious::Lite;
 
 use FindBin;
 BEGIN { unshift @INC, "$FindBin::Bin/../lib" }

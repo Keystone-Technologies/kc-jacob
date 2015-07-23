@@ -25,6 +25,31 @@ html {
   height: 100%;
 }
 
+#dev {
+  position: fixed;
+  top: 0px;
+  left: calc((100% - 500px) / 2);
+  z-index: 1000;
+  width: 500px;
+  height: 100px;
+  background: #000;
+  outline: solid 2px #ff0000;
+}
+
+#dev p {
+  color: #fff;
+  height: 15px;
+  margin: 2px;
+  font-size: 13px;
+}
+
+#dev #x {
+  position: absolute;
+  color: #ff0000;
+  left: 470px;
+  top: 5px;
+  cursor: pointer;
+}
 .banner {
   position: relative;
   display: none;

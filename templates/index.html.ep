@@ -50,6 +50,14 @@
        	</span>
     </div>
 </div>
+<div id='dev'>
+    <div><span id='x' class="glyphicon glyphicon-remove"></span></div>
+    <p id='screentext'></p>
+    <p id='windowtext'></p>
+    <p id='pixeltext'></p>
+    <p id='organizationtext'>Organization: <%= $tenant %></p>
+    <p id='messagetext'></p>
+</div>
 <div id="header" role="banner" class="col-xs-12">
     <div class="flex clearfix">
         <nav class="left">

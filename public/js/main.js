@@ -25,13 +25,22 @@ $(window).load(function(){
 })
 
 $(document).ready(function () {
-    console.log("width " + (($("#row").width() - $("#app-drawer-container").width()) / 2).toString())
-    console.log("Window: " + $(window).width() + " x " + $(window).height());
-    console.log("Document: " + $(document).width() + " x " + $(document).height());
-    console.log("Screen: " + screen.width + " x " + screen.height);
-    console.log("Pixel ratio: " + (window).devicePixelRatio);
-    console.log("Calculated screen width: " + (screen.width * (window).devicePixelRatio));
-    console.log("Calculated screen height: " + (screen.height * (window).devicePixelRatio));
+    
+    var websocket = new WebSocket("wss://kc-jacob2-jdorpinghaus.c9.io/news");
+    websocket.onmessage = function(event){ 
+        $("#messagetext").html("Message: " + event.data);
+    };
+    websocket.onopen = function (event) {
+        websocket.send("message");
+    };
+    
+    $("#windowtext").text("Window dimensions: " + $(window).width() + " x " + $(window).height());
+    $("#screentext").text("Screen dimensions: " + screen.width + " x " + screen.height);
+    $("#pixeltext").text("Pixel ratio: " + (window).devicePixelRatio);
+    
+    $("#x").click(function(){
+        $("#dev").remove();
+    });
 
     if ($(window).width() <= screenwidth){
         $("#app-drawer-container").width(Math.floor((($(window).width() - ($(window).width() * .1)) / 100)) * 100);
@@ -574,19 +583,6 @@ function firstWallInit() {
         gutterX: 30,
         gutterY: 30,
         //        rightToLeft: true,
-        onResize: function () {
-            wall.refresh();
-            //            wall.setHoles({
-            //             top:0,
-            //             left:0,
-            //             width:4,
-            //             height:5   
-            //            });
-            //            $(".folder").removeClass("brick");
-        }
-    });
-    wall.container.find('.brick img').load(function() {
-        wall.refresh();
     });
     wall.fitZone();
     console.log("main grid loaded");
@@ -629,9 +625,6 @@ function appTrayInit() {
         cellH: 100,
         gutterX: 30,
         gutterY: 30,
-        onResize: function () {
-            appTray.refresh();
-        }
     });
 
     appTray.fitWidth();

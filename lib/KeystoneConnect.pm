@@ -1,5 +1,6 @@
 package KeystoneConnect;
 use Mojo::Base 'Mojolicious';
+use Mojo::Transaction::WebSocket;
 
 # This method will run once at server start
 sub startup {
@@ -9,11 +10,29 @@ sub startup {
   $self->plugin('PODRenderer');
   $self->plugin(JSONP => callback => 'callback');
   
+  my $ws = Mojo::Transaction::WebSocket->new;
+  
   # Router
   my $r = $self->routes;
 
   # Normal route to controller
   #$r->get('/')->to('example#welcome');
+  $r->websocket('/news')->to(cb => sub {
+    my $self = shift;
+    $self->on(message => sub {
+      my ($self, $msg) = @_;
+      if ($msg eq 'message'){
+        my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime();
+        if ($min % 2 == 0) {
+          $self->send(scalar localtime());
+        }
+        else {
+          $self->send("Odd minute");
+        }
+      }
+    });
+  });
+  
   $r->get('/videocall/#name/#email')->to(cb => sub {
     my $c = shift;
     my $me = {
@@ -40,7 +59,7 @@ sub startup {
       $c->render(json => $tx->res->json);
     });
   });
-
+  
   $r->any('/api/grid/:page')->to(cb => sub {
     my $c = shift;
     my $img = 'img/TwitterAppIcon.png';
@@ -90,4 +109,5 @@ sub startup {
   $r->get('/:tenant', {tenant => 'keystone-technologies'})->name('index');
 }
 
+  
 1;
