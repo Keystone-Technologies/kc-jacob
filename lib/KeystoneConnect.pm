@@ -14,8 +14,6 @@ sub startup {
 
   # Normal route to controller
   #$r->get('/')->to('example#welcome');
-  $r->get('/')->to(cb => sub { shift->redirect_to('/index.html') });
-
   $r->get('/videocall/#name/#email')->to(cb => sub {
     my $c = shift;
     my $me = {
@@ -88,6 +86,8 @@ sub startup {
       {"col"=>1,"row"=>4,"size_x"=>1,"size_y"=>1,img=>$img,label=>$label,url=>$url}
     ]);
   });
+
+  $r->get('/:tenant', {tenant => 'keystone-technologies'})->name('index');
 }
 
 1;
