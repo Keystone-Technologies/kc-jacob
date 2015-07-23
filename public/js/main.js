@@ -585,6 +585,9 @@ function firstWallInit() {
             //            $(".folder").removeClass("brick");
         }
     });
+    wall.container.find('.brick img').load(function() {
+        wall.refresh();
+    });
     wall.fitZone();
     console.log("main grid loaded");
 }
