@@ -1,0 +1,247 @@
+<!doctype html>
+<html class="no-js" id="startme" lang="en">
+<head>
+<!-- CDN Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.gridster/0.5.6/jquery.gridster.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Neuton:200,300,400,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+<!-- CDN Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
+    
+<!-- Local stylsheets and scripts -->
+    <link rel="stylesheet" href="styles/site.css">
+    <link rel="stylesheet" href="styles/loading.css">
+    <link href="/css/startme.css" media="all" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="styles/breakingNews.css">
+    <script src="js/tempjson.js"></script>
+    <script src="js/freewall.js"></script>
+    <script src="js/jquery.rss.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/widget.js"></script>
+    <script src="js/swipe.js"></script>
+    
+<!-- META VIEWPORT TAGS ARE NOT SUPPORTED ON DESKTOP BROWSERS-->
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    
+<!--[if IE]>
+<link href="/favicon.ico" rel="shortcut icon">
+<![endif]-->
+<!--[if lt IE 9]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js" type="text/javascript"></script>
+<![endif]-->
+    
+</head>
+<body>
+<div id="loadingcover">
+	<div id="panel">
+	    <p id='loadingtext'>Loading...</p>
+    	<span id="loading4">
+            <span id="outerCircle1"></span>
+       	</span>
+    </div>
+</div>
+<div id="header" role="banner" class="col-xs-12">
+    <div class="flex clearfix">
+        <nav class="left">
+            <ul class="buttons">
+                <li class="button ui-droppable" id="pages-menu" title="Keystone Connect">
+                    <i class="startme-icon"></i>
+                    <span>
+                    Keystone Connect: <%= $tenant %>
+                    </span>
+                    <i class="fa fa-chevron-down"></i>
+                </li>
+                <li class="subscribe button">
+                    <i class="fa fa-fw fa-thumb-tack"></i>
+                    Follow
+                </li>
+            </ul>
+
+        </nav>
+        <nav class="right">
+
+            <div class="buttons" id="menus">
+
+                <a href="/users/sign_in" class="not-logged-in sign-in button"><i class="fa fa-sign-in"></i>
+                    <span>Sign in</span>
+                </a><a href="/users/sign_out" class="logged-in button no-me-menu" data-method="delete" id="logoutButton" rel="nofollow"><i class="fa fa-sign-out right"></i>
+                <span>Sign out</span>
+            </a>
+                <!--<a class="button logged-in menu" id="me" style="background-image: url(&quot;//www.gravatar.com/avatar/6139e4ad230648ca4f1e68b985ef589c?d=mm&quot;)" title="Test"></a>-->
+
+
+            </div>
+        </nav>
+        <nav class="center">
+            <section class="right" id="searchbar" role="search">
+                <div class="wrapper"><i class="button fa fa-fw fa-search" title="Search Google Custom Search"></i><i class="menu fa fa-fw fa-chevron-down trigger"></i><input autofocus="" data-force="0" id="search" placeholder="" class="custom-search empty ui-autocomplete-input" autocomplete="off">
+                </div>
+            </section>
+
+        </nav>
+
+    </div>
+    <div class="banner">
+        <div class="breakingNews bn-large" id="bn10">
+            <div class="bn-title"><h2>WHOA!</h2><span></span></div>
+            <ul><li style="display: list-item;"><a href="http://google.com">Bingo TONIGHT at 4p!</a></li></ul>
+        </div>
+        <div class="close-banner">X</div>
+    </div>
+</div>
+<div id="home">
+    <div id="trash" class="gridster">
+        <h2 class="text-center">
+            <i class="glyphicon glyphicon-trash"></i> Remove</h2>
+    </div>
+    <div id="password-modal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h1 class="modal-title">Login </h1>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-6 text-center">
+                            <img id="community-logo" src="img/western-logo.png" />
+
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="row">
+                                <form class="form-horizontal col-xs-12">
+                                    <div class="form-group">
+                                        <label class="control-label">Username</label>
+                                        <input class="username-input form-control" type="text" placeholder="Username" value=""/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">Password</label>
+                                        <input class="password-input form-control" type="password" placeholder="Password" value=""/>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <a id="login-button" class="btn btn-primary">Log In</a>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <div class="modal fade folder-modal" tabindex="-1" role="dialog" aria-labelledby="folderModalLabel" aria-hidden="true">
+        <div class="modal-dialog" id="foldermodaldialog">
+            <div class="modal-content" id="foldermodalcontent">
+                <div class="modal-header text-center" id="foldermodalheader">
+                    <h1 class="folder-name" unselectable="on"></h1>
+                    <input class="folder-input hidden"/>
+                </div>
+                <div class="modal-body" id="foldermodal">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id='gridholder'>
+        <div class="grid-container" id="grid-container">
+            <div id="firstwall" class="free-wall"></div>
+            <div  id="freewall1" class="free-wall"></div>
+        </div>
+    </div>
+    <div id="app-tray" class="text-center col-xs-12">
+        <div class="row" id="row">
+            <div id="grid-pagination" class="col-xs-12">
+                <!-- <div id='scrollbar'>
+                    <div id='scrollbarthumb'></div>
+                </div> -->
+                <ul class="list-inline text-center">
+                    <li id="up-full"><span class="fa fa-angle-up"></span></li>
+                    <li id="left-full"> <span class="fa fa-angle-left"></span></li>
+                    <li id="right-full"> <span class="fa fa-angle-right"></span></li>
+                    <li id="down-full"><span class="fa fa-angle-down"></span></li>
+                </ul>
+                <ul class='list-inline text-center'>
+                    <li id='apptrayleft'><span class='fa fa-angle-double-left'></span></li>
+                    <li id='apptrayright'><span class='fa fa-angle-double-right'></span></li>
+                    
+                </ul>
+            </div>
+            <div id='app-drawer-container'>
+                <div id="app-drawer" class="list-inline free-wall"></div>
+            </div>
+        </div>
+    </div>
+    <div id="create-folder" class="col-xs-12">
+        <h2 class="text-center"><i class="glyphicon glyphicon-folder-open"></i> Create a Folder</h2>
+    </div>
+    <div id="app-store-modal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1>
+                        <img class="app-icon pull-left" src="img/AppStore_Icon.png" />
+                        App Store
+                    </h1>
+                    <p>Please select the app or widget you would like to add to your homescreen</p>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="row">
+                                <div id="app-nav" class="col-xs-12">
+                                    <div class="row">
+                                        <ul class="nav navbar-nav">
+                                            <li class="active"><a href="#">Apps <span class="sr-only">(current)</span></a></li>
+                                            <li><a href="#">Widgets</a></li>
+
+                                        </ul>
+                                        <form id="search-nav" class="navbar-form navbar-right" role="search">
+                                            <div class="form-group">
+                                                <i class="glyphicon glyphicon-search"></i>
+                                                <input type="text" class="form-control" placeholder="Search">
+                                            </div>
+                                            <button type="submit" class="btn btn-default">Search</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div id="apps-container" class="free-wall">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <a id="add-app" class="btn btn-primary">Save Changes</a>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+        <!-- /.modal -->
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            console.log("All JavaScript is loaded");
+        });
+    </script>
+</div>
+</body>
+</html>
