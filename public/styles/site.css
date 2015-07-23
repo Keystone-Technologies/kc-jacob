@@ -658,11 +658,15 @@ p {
   height: 20px;
   width: 20px;
 }
-.widget {
+.widget[border='true'] {
   border: #7eb0db 1px solid;
   border-radius: 20px;
   background: #ffffff;
 }
+.widget[border='false'] {
+  border-radius: 20px;
+}
+
 .widget h2 {
   color: #7eb0db;
 }
@@ -700,7 +704,19 @@ p {
   display: block;
 }
 
-.iframe {
+.widget[border='false'] .iframe {
+  height: 100%;
+  width: 100%;
+  border: 0px;
+}
+
+.widget[border='false'] .iframe-small {
+  height: 100%;
+  width: 100%;
+  border: 0px;
+}
+
+.widget[border='true'] .iframe {
   height: 100%;
   max-height: 200px;
   min-height: 200px;
@@ -708,7 +724,7 @@ p {
   border: 0px;
 }
 
-.iframe-small {
+.widget[border='true'] .iframe-small {
   max-height: 100px;
   min-height: 100;
   overflow-y: auto;

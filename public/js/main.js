@@ -18,9 +18,12 @@ var gridcontainerzoomwidth;
 var screenheight = 900;
 var screenwidth = 1440;
 
+
+
 $(window).load(function(){
     $("#loadingcover").remove();
 })
+
 $(document).ready(function () {
     console.log("width " + (($("#row").width() - $("#app-drawer-container").width()) / 2).toString())
     console.log("Window: " + $(window).width() + " x " + $(window).height());
@@ -55,6 +58,8 @@ $(document).ready(function () {
         $("#grid-container").css('left', (($("#gridholder").width() - ($("#firstwall").width() * (scale + 1))) / 2));
         $("#grid-container").css('transform', 'scale(' + ((scale + 1).toString()) + ')');
         $("#grid-container").css('transform-origin', "0 0");
+        $("#grid-container").css('top', ((($("#gridholder").height() - ($("#grid-container").height() * (scale + 1))) / 2)));
+        console.log("gridscroll: " +  $("#grid-container").scrollTop());
     }
 
     // requestPassword();
@@ -103,7 +108,8 @@ $(window).resize(function(){
         $("#grid-container").css('left', (($("#gridholder").width() - ($("#firstwall").width() * (scale + 1))) / 2));
         $("#grid-container").css('transform', 'scale(' + ((scale + 1).toString()) + ')');
         $("#grid-container").css('transform-origin', "0 0");
-        $("#grid-container").css('top', '0');
+        $("#grid-container").css('top', ((($("#gridholder").height() - ($("#grid-container").height() * (scale + 1))) / 2)));
+        console.log("gridscroll: " +  $("#grid-container").scrollTop());
     }
 });
 
