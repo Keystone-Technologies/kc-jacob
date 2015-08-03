@@ -1,7 +1,6 @@
 package KeystoneConnect;
 use Mojo::Base 'Mojolicious';
 use Mojo::Transaction::WebSocket;
-
 # This method will run once at server start
 sub startup {
   my $self = shift;
@@ -23,12 +22,10 @@ sub startup {
       my ($self, $msg) = @_;
       if ($msg eq 'message'){
         my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime();
-        if ($min % 2 == 0) {
-          $self->send(scalar localtime());
-        }
-        else {
-          $self->send("Odd minute");
-        }
+        my $message = {message => ('Current date and time is: ' . (scalar localtime())), expiration => 4};
+        #if ($min % 2 == 0) {
+        $self->send({json => $message});
+        #}
       }
     });
   });

@@ -50,8 +50,10 @@
        	</span>
     </div>
 </div>
+<div id='showdev'>
+    <p>Dev</p>
+</div>
 <div id='dev'>
-    <div><span id='x' class="glyphicon glyphicon-remove"></span></div>
     <p id='screentext'></p>
     <p id='windowtext'></p>
     <p id='pixeltext'></p>
@@ -99,10 +101,10 @@
         </nav>
 
     </div>
-    <div class="banner">
+    <div class="banner" id='banner'>
         <div class="breakingNews bn-large" id="bn10">
             <div class="bn-title"><h2>WHOA!</h2><span></span></div>
-            <ul><li style="display: list-item;"><a href="http://google.com">Bingo TONIGHT at 4p!</a></li></ul>
+            <ul><li style="display: list-item;"><a href="http://google.com"><p id='bannertext'></p></a></li></ul>
         </div>
         <div class="close-banner">X</div>
     </div>

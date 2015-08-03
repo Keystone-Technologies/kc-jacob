@@ -14,21 +14,31 @@ var verticalgridscroll = 100;
 var apptrayscroll = 100;
 var scrollbarscroll;
 var gridcontainerzoomwidth;
+var devshown = false;
+var messageexpiration;
 
-var screenheight = 900;
-var screenwidth = 1440;
+var screenheight = 900 //768;
+var screenwidth = 1440 //1366;
 
 
 
 $(window).load(function(){
     $("#loadingcover").remove();
+    console.log('setting timeout');
+    setTimeout(function(){
+        console.log('timeout fired')
+        $("#banner").remove();
+        }, messageexpiration);
 })
 
 $(document).ready(function () {
     
     var websocket = new WebSocket("wss://kc-jacob2-jdorpinghaus.c9.io/news");
     websocket.onmessage = function(event){ 
-        $("#messagetext").html("Message: " + event.data);
+        var obj = $.parseJSON(event.data);
+        $("#messagetext").html("Message: " + obj.message);
+        $("#bannertext").html(obj.message);
+        messageexpiration = (obj.expiration * 1000);
     };
     websocket.onopen = function (event) {
         websocket.send("message");
@@ -41,6 +51,16 @@ $(document).ready(function () {
     $("#x").click(function(){
         $("#dev").remove();
     });
+    $("#showdev").click(function(){
+        if (devshown == false){
+            $("#dev").css('opacity', 1);
+            devshown = true;
+        }
+        else {
+            $("#dev").css('opacity', 0);
+            devshown = false;
+        }
+    });
 
     if ($(window).width() <= screenwidth){
         $("#app-drawer-container").width(Math.floor((($(window).width() - ($(window).width() * .1)) / 100)) * 100);
@@ -48,6 +68,7 @@ $(document).ready(function () {
         $("#app-drawer-container").css('left', (($("#row").width() - $("#app-drawer-container").width()) / 2));
         $("#app-tray").height(140);
         $("#gridholder").height($(window).height() - $("#app-tray").height() - $("#header").height());
+        $("#grid-container").height(Math.floor($("#gridholder").height() / 100) * 100);
         $("#grid-container").width(Math.floor(($(window).width() / 100)) * 100);
         $("#grid-container").css('top', (($("#gridholder").height() - $("#grid-container").height()) / 2));
         $("#grid-container").css('left', (($("#gridholder").width() - $("#grid-container").width()) / 2));

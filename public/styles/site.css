@@ -28,12 +28,13 @@ html {
 #dev {
   position: fixed;
   top: 0px;
-  left: calc((100% - 500px) / 2);
+  left: calc((100% - 300px) / 2);
   z-index: 1000;
-  width: 500px;
+  width: 300px;
   height: 100px;
   background: #000;
   outline: solid 2px #ff0000;
+  opacity: 0;
 }
 
 #dev p {
@@ -43,25 +44,21 @@ html {
   font-size: 13px;
 }
 
-#dev #x {
-  position: absolute;
+#showdev {
+  width: 30px;
+  height: 20px;
+  position: fixed;
+  top: 20px;
+  background: #000;
   color: #ff0000;
-  left: 470px;
-  top: 5px;
+  z-index: 9998;
   cursor: pointer;
 }
-.banner {
-  position: relative;
-  display: none;
+#showdev p {
+  padding: 0px;
+  margin: 0px;
 }
-.banner .close-banner {
-  color: #23789e;
-  cursor: pointer;
-  font-size: 20px;
-  right: 8px;
-  position: absolute;
-  top: 5px;
-}
+
 .container {
   width: 1400px;
   overflow-y: scroll;
@@ -414,7 +411,7 @@ html {
 
 .folder-brick-icon {
   cursor: pointer;
-  padding-bottom: 20px;
+  padding-bottom: 4px;
 }
 
 #foldermodaldialog {
@@ -605,7 +602,18 @@ p {
 .banner {
   background: #ffffff;
   border: 1px solid #c3c3c3;
-  width: 100%;
+  position: relative;
+  width: 50%;
+  left: 25%;
+  top: -20px;
+}
+.banner .close-banner {
+  color: #23789e;
+  cursor: pointer;
+  font-size: 20px;
+  right: 8px;
+  position: absolute;
+  top: 5px;
 }
 .banner a:hover {
   opacity: .6;
