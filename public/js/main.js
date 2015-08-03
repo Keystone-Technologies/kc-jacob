@@ -7,8 +7,8 @@ var gridheight;
 var gridwidth;
 var apptraywidth;
 var scrolltime = 200;
-var horizontalgridscroll = 95;
-var verticalgridscroll = 95;
+var horizontalgridscroll = iconwidth;
+var verticalgridscroll = iconheight;
 var apptrayscroll = 95;
 var scrollbarscroll;
 var gridcontainerzoomwidth;
@@ -103,10 +103,17 @@ $(document).ready(function () {
     //addMenuToIcons();
     setLabels();
     iconMenuListeners();
-    staticEventListeners();
+    
+    horizontalgridscroll = (Number(($("#firstwall .brick-icon")[0].style.width).slice(0, -2)) + 30);
+    verticalgridscroll = (Number(($("#firstwall .brick-icon")[0].style.height).slice(0, -2)) + 30);
+    console.log('horiz: ' + horizontalgridscroll);
+    console.log('verti: ' + verticalgridscroll);
+    
+    staticEventListeners()
     //swipeHandlers();
     setScrollbar();
     
+    $("#firstwall").height($("#firstwall").height() + 15);
     $(".rss-feed").css('min-height', (iconwidth * 2));
     $(".rss-feed").css('max-height', (iconwidth * 2));
     $(".rss-feed-small").css('min-height', iconwidth);
@@ -699,9 +706,9 @@ function staticEventListeners() {
 
 function setLabels(){
     $.each($(".apptext"), function(){
-        var parentwidth = $(this).parent().attr('data-width');
-        $(this).width(parentwidth - 6); //HARDCODED
-        $(this).css('left', '-12px');   //HARDCODED
+        var parentwidth = $(this).parent()[0].style.width;
+        $(this).width(parentwidth); 
+        //$(this).css('left', '-12px');   //HARDCODED
     });
 }
 

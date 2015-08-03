@@ -37,7 +37,6 @@
     <script src="js/jquery.rss.js"></script>
     <script src="js/main.js"></script>
     <script src="js/widget.js"></script>
-    <script src="js/swipe.js"></script>
 
 <!-- META VIEWPORT TAGS ARE NOT SUPPORTED ON DESKTOP BROWSERS-->
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />

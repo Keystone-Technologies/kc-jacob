@@ -149,6 +149,7 @@ html {
 }
 #firstwall {
   margin: 0px 0px 0px 0px;
+  /* border-bottom: 15px solid  rgba(0, 0, 0, 0); */
   float: left;
   display: inline-block;
   height: 1700px;
@@ -548,6 +549,8 @@ p {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  z-index: 5;
+  font-size: 11px;
 }
 
 .folderapptext {
