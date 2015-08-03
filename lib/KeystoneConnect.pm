@@ -22,7 +22,7 @@ sub startup {
       my ($self, $msg) = @_;
       if ($msg eq 'message'){
         my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime();
-        my $message = {message => ('Current date and time is: ' . (scalar localtime())), expiration => 4};
+        my $message = {message => ('Current date and time is: ' . (scalar localtime())), expiration => 30};
         #if ($min % 2 == 0) {
         $self->send({json => $message});
         #}

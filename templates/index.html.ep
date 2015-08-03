@@ -18,6 +18,15 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
     
+<!-- JavaScript Variables -->
+    <script type='text/javascript'>
+        var screenheight = /*900*/ 768;
+        var screenwidth = /*1440*/ 1366;
+        
+        var iconwidth = (Math.floor(screenwidth / 14));
+        var iconheight = iconwidth;
+    </script
+
 <!-- Local stylsheets and scripts -->
     <link rel="stylesheet" href="styles/site.css">
     <link rel="stylesheet" href="styles/loading.css">
@@ -29,7 +38,7 @@
     <script src="js/main.js"></script>
     <script src="js/widget.js"></script>
     <script src="js/swipe.js"></script>
-    
+
 <!-- META VIEWPORT TAGS ARE NOT SUPPORTED ON DESKTOP BROWSERS-->
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     

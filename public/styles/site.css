@@ -6,6 +6,15 @@
 
 } */
 
+@keyframes bannercolor {
+    0%{color: #23789e;}
+    20% {color: yellow;}
+    40% {color: green;}
+    60% {color: orange;}
+    80% {color: green;}
+    100% {color: #23789e;}
+}
+
 * {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -34,7 +43,7 @@ html {
   height: 100px;
   background: #000;
   outline: solid 2px #ff0000;
-  opacity: 0;
+  display: none;
 }
 
 #dev p {
@@ -139,7 +148,6 @@ html {
   display: none;
 }
 #firstwall {
-  min-width: 1400px;
   margin: 0px 0px 0px 0px;
   float: left;
   display: inline-block;
@@ -405,7 +413,7 @@ html {
 }
 #home #app-tray #app-drawer .brick-icon {
   float: left;
-  width: 100px;
+  width: 95px;
   cursor: pointer;
 }
 
@@ -599,6 +607,10 @@ p {
 .btn-default {
   border-color: #7eb0db;
 }
+
+#bannertext {
+  animation: bannercolor 2s infinite;
+}
 .banner {
   background: #ffffff;
   border: 1px solid #c3c3c3;
@@ -705,14 +717,18 @@ p {
 }
 .widget .rss-feed {
   height: 100%;
-  max-height: 200px;
-  min-height: 200px;
+  /* MOVED TO JS
+  max-height: 190px;
+  min-height: 190px;
+  */
   overflow-y: scroll;
 }
 
 .widget .rss-feed-small {
-  max-height: 100px;
-  min-height: 100;
+  /* MOVED TO JS
+  max-height: 95px;
+  min-height: 95px;
+  */
   overflow-y: scroll;
 }
 
@@ -751,14 +767,14 @@ p {
 
 .widget[border='true'] .iframe {
   height: 100%;
-  max-height: 200px;
-  min-height: 200px;
+  max-height: 190px;
+  min-height: 190px;
   overflow-y: auto;
   border: 0px;
 }
 
 .widget[border='true'] .iframe-small {
-  max-height: 100px;
+  max-height: 95px;
   min-height: 100;
   overflow-y: auto;
   border: 0px;

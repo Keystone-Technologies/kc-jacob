@@ -3,22 +3,17 @@ var newName;
 var inputVal;
 var startingName;
 var $currentFolder;
-var iconwidth = 100;
-var iconheight = 100;
 var gridheight;
 var gridwidth;
 var apptraywidth;
 var scrolltime = 200;
-var horizontalgridscroll = 100;
-var verticalgridscroll = 100;
-var apptrayscroll = 100;
+var horizontalgridscroll = 95;
+var verticalgridscroll = 95;
+var apptrayscroll = 95;
 var scrollbarscroll;
 var gridcontainerzoomwidth;
 var devshown = false;
 var messageexpiration;
-
-var screenheight = 900 //768;
-var screenwidth = 1440 //1366;
 
 
 
@@ -32,7 +27,10 @@ $(window).load(function(){
 })
 
 $(document).ready(function () {
+    $("#firstwall").css('min-width', (iconwidth * 14));
     
+    console.log('cellw: ' + iconwidth);
+    console.log('cellh: ' + iconheight);
     var websocket = new WebSocket("wss://kc-jacob2-jdorpinghaus.c9.io/news");
     websocket.onmessage = function(event){ 
         var obj = $.parseJSON(event.data);
@@ -53,23 +51,23 @@ $(document).ready(function () {
     });
     $("#showdev").click(function(){
         if (devshown == false){
-            $("#dev").css('opacity', 1);
+            $("#dev").css('display', 'block');
             devshown = true;
         }
         else {
-            $("#dev").css('opacity', 0);
+            $("#dev").css('display', 'none');
             devshown = false;
         }
     });
 
     if ($(window).width() <= screenwidth){
-        $("#app-drawer-container").width(Math.floor((($(window).width() - ($(window).width() * .1)) / 100)) * 100);
+        $("#app-drawer-container").width(Math.floor((($(window).width() - ($(window).width() * .1)) / iconwidth)) * iconwidth);
         $("#app-drawer-container").css('transform', 'scale(1)');
         $("#app-drawer-container").css('left', (($("#row").width() - $("#app-drawer-container").width()) / 2));
         $("#app-tray").height(140);
         $("#gridholder").height($(window).height() - $("#app-tray").height() - $("#header").height());
-        $("#grid-container").height(Math.floor($("#gridholder").height() / 100) * 100);
-        $("#grid-container").width(Math.floor(($(window).width() / 100)) * 100);
+        $("#grid-container").height(Math.floor($("#gridholder").height() / iconheight) * iconheight);
+        $("#grid-container").width(Math.floor(($(window).width() / iconwidth)) * iconwidth);
         $("#grid-container").css('top', (($("#gridholder").height() - $("#grid-container").height()) / 2));
         $("#grid-container").css('left', (($("#gridholder").width() - $("#grid-container").width()) / 2));
         $("#grid-container").css('transform', 'scale(1)');
@@ -85,11 +83,10 @@ $(document).ready(function () {
         $("#gridholder").height($(window).height() - $("#app-tray").height() - $("#header").height());
         $("#grid-container").width(screenwidth);
         $("#grid-container").height(((Math.floor($("#gridholder").height() / (iconheight * (scale + 1)))) * (iconheight * (scale + 1))) / (scale + 1));
-        $("#grid-container").css('left', (($("#gridholder").width() - ($("#firstwall").width() * (scale + 1))) / 2));
+        $("#grid-container").css('left', Math.abs((($("#firstwall").width() * (scale + 1)) - $("#gridholder").width()) / 2));
         $("#grid-container").css('transform', 'scale(' + ((scale + 1).toString()) + ')');
         $("#grid-container").css('transform-origin', "0 0");
         $("#grid-container").css('top', ((($("#gridholder").height() - ($("#grid-container").height() * (scale + 1))) / 2)));
-        console.log("gridscroll: " +  $("#grid-container").scrollTop());
     }
 
     // requestPassword();
@@ -109,18 +106,23 @@ $(document).ready(function () {
     staticEventListeners();
     //swipeHandlers();
     setScrollbar();
+    
+    $(".rss-feed").css('min-height', (iconwidth * 2));
+    $(".rss-feed").css('max-height', (iconwidth * 2));
+    $(".rss-feed-small").css('min-height', iconwidth);
+    $(".rss-feed-small").css('max-height', iconwidth);
 });
 
 $(window).resize(function(){
     if ($(window).width() <= screenwidth){
         $("#app-drawer-container").css('transform', 'scale(1)');
-        $("#app-drawer-container").width(Math.floor((($(window).width() - ($(window).width() * .1)) / 100)) * 100);
+        $("#app-drawer-container").width(Math.floor((($(window).width() - ($(window).width() * .1)) / iconwidth)) * iconwidth);
         $("#app-drawer-container").css('left', (($("#row").width() - $("#app-drawer-container").width()) / 2));
         $("#app-tray").height(140);
         $("#gridholder").height($(window).height() - $("#app-tray").height() - $("#header").height());
         $("#grid-container").css('transform', 'scale(1)');
-        $("#grid-container").height(Math.floor($("#gridholder").height() / 100) * 100);
-        $("#grid-container").width(Math.floor(($(window).width() / 100)) * 100);
+        $("#grid-container").height(Math.floor($("#gridholder").height() / iconheight) * iconheight);
+        $("#grid-container").width(Math.floor(($(window).width() / iconwidth)) * iconwidth);
         $("#grid-container").css('top', (($("#gridholder").height() - $("#grid-container").height()) / 2));
         $("#grid-container").css('left', (($("#gridholder").width() - $("#grid-container").width()) / 2));
         $("#scrollbar").width($(window).width() - 20);
@@ -135,7 +137,7 @@ $(window).resize(function(){
         $("#gridholder").height($(window).height() - $("#app-tray").height() - $("#header").height());
         $("#grid-container").width(screenwidth);
         $("#grid-container").height(((Math.floor($("#gridholder").height() / (iconheight * (scale + 1)))) * (iconheight * (scale + 1))) / (scale + 1));
-        $("#grid-container").css('left', (($("#gridholder").width() - ($("#firstwall").width() * (scale + 1))) / 2));
+        $("#grid-container").css('left', Math.abs((($("#firstwall").width() * (scale + 1)) - $("#gridholder").width()) / 2));
         $("#grid-container").css('transform', 'scale(' + ((scale + 1).toString()) + ')');
         $("#grid-container").css('transform-origin', "0 0");
         $("#grid-container").css('top', ((($("#gridholder").height() - ($("#grid-container").height() * (scale + 1))) / 2)));
@@ -382,6 +384,7 @@ function firstWallAddCells() {
     }
     
     gridwidth = ((rowmax + 1) * iconwidth);
+    console.log
     if (rows[rowmaxindex] != iconwidth) {
         gridwidth += (widths[rowmaxindex] - iconwidth);
     }
@@ -642,8 +645,8 @@ function appTrayInit() {
         selector: '.brick',
         animate: true,
         fixSize: 0,
-        cellW: 100,
-        cellH: 100,
+        cellW: iconwidth,
+        cellH: iconheight,
         gutterX: 30,
         gutterY: 30,
     });
