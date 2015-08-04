@@ -25,6 +25,9 @@
         
         var iconwidth = (Math.floor(screenwidth / 14));
         var iconheight = iconwidth;
+        
+        var gutter = Math.floor(iconwidth / 3.33);
+        console.log(gutter);
     </script
 
 <!-- Local stylsheets and scripts -->
@@ -69,6 +72,9 @@
     <p id='messagetext'></p>
 </div>
 <div id="header" role="banner" class="col-xs-12">
+    <div id='branding'>
+        <p id='brandtext'><%= $tenant %></p>
+    </div>
     <div class="flex clearfix">
         <nav class="left">
             <ul class="buttons">

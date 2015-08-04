@@ -559,6 +559,7 @@ var verticalgridscroll;
             var cellW = runtime.cellW;
             var totalWidth = Math.max(0, cellW * totalCol - gutterX);
             var totalHeight = Math.max(0, cellH * totalRow - gutterY);
+            console.log('totalWidth: ' + Math.ceil(totalWidth)); 
             
             container.attr({
                 'data-total-col': totalCol,
