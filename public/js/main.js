@@ -28,7 +28,9 @@ $(window).load(function(){
 })
 
 $(document).ready(function () {
+    console.log('sending request');
     $.get("http://foodmenu.dev.kit.cm/20150810", function(data){
+        console.log('Data: ');
         console.log(data);
     }, 'jsonp');
     $("#firstwall").css('min-width', (iconwidth * 14));
