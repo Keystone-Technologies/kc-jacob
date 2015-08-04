@@ -1,5 +1,5 @@
 var firstWallJSON = [
-    { "width": 4, "height": 2, "initialPosition":"0-10", "link":"http://www.google.com", "src": "", "class": "rss", "text": "<div class=\"widget text-center\" border='true'><h2><span class=\"glyphicon glyphicon-comment\"></span>Community Chat</h2></div>" },
+    { "width": 4, "height": 2, "initialPosition":"0-10", "link":"http://www.google.com", "src": "", "class": "rss", "text": "<div class=\"widget text-center\" id='tester' border='false'><iframe class='iframe-small' scrolling='no' src='http://chat.dev.kit.cm/'></iframe></div>" },
     { "width": 4, "height": 2, "initialPosition":"0-0", "link":"http://www.google.com", "src": "", "class": "rss", "text": "<div class=\"widget text-center\" border='true'><h2><span class=\"glyphicon glyphicon-cutlery\"></span>Food Menu</h2><div id=\"food-rss\" class=\"rss-feed-small\"></div></div>" },
     { "width": 4, "height": 2, "initialPosition":"2-0", "link":"http://www.google.com", "src": "", "class": "rss", "text": "<div class=\"widget text-center\" border='false'><iframe id='calendar-iframe' class='iframe-small' src='https://www.google.com/calendar/embed?title=Community%20Events&amp;showNav=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;mode=AGENDA&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;ctz=America%2FChicago'></iframe></div>" },
     { "width": 4, "height": 2, "initialPosition":"2-10", "link":"http://www.google.com", "src": "", "class": "rss", "text": "<div class=\"widget text-center\" border='false'><h2><img id='mediprocity-iframe' class='iframe-small' src=\"img/keystone_chat.jpg\" scrolling='yes'></img></div>" },
@@ -474,6 +474,13 @@ var folder2JSON = [
     { "width": 100, "height": 100, "initialPosition":"0-0", "link":"http://www.google.com/calendar", "src": "img/GoogleCalendar_AppIcon.png", "class": "folder-brick-icon", "text": "Calendar" },
     { "width": 100, "height": 100, "initialPosition":"0-1", "link":"http://www.drive.google.com", "src": "img/GoogleDrive_AppIcon.png", "class": "folder-brick-icon", "text": "Storage" },
     { "width": 100, "height": 100, "initialPosition":"0-2", "link":"http://www.google.com", "src": "img/GoogleDocs_AppIcon.png", "class": "folder-brick-icon", "text": "Google Docs" },
+    { "width": 100, "height": 100, "initialPosition":"0-3", "link":"http://www.google.com/calendar", "src": "img/GoogleCalendar_AppIcon.png", "class": "folder-brick-icon", "text": "Calendar" },
+    { "width": 100, "height": 100, "initialPosition":"0-4", "link":"http://www.drive.google.com", "src": "img/GoogleDrive_AppIcon.png", "class": "folder-brick-icon", "text": "Storage" },
+    { "width": 100, "height": 100, "initialPosition":"1-0", "link":"http://www.google.com", "src": "img/GoogleDocs_AppIcon.png", "class": "folder-brick-icon", "text": "Google Docs" },
+    { "width": 100, "height": 100, "initialPosition":"1-1", "link":"http://www.google.com/calendar", "src": "img/GoogleCalendar_AppIcon.png", "class": "folder-brick-icon", "text": "Calendar" },
+    { "width": 100, "height": 100, "initialPosition":"1-2", "link":"http://www.drive.google.com", "src": "img/GoogleDrive_AppIcon.png", "class": "folder-brick-icon", "text": "Storage" },
+    { "width": 100, "height": 100, "initialPosition":"1-3", "link":"http://www.google.com", "src": "img/GoogleDocs_AppIcon.png", "class": "folder-brick-icon", "text": "Google Docs" },
+
 
     ];
     

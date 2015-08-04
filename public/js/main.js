@@ -18,6 +18,7 @@ var messageexpiration;
 
 
 $(window).load(function(){
+    folderIconInit();
     $("#loadingcover").remove();
     console.log('setting timeout');
     setTimeout(function(){
@@ -27,6 +28,9 @@ $(window).load(function(){
 })
 
 $(document).ready(function () {
+    $.get("http://foodmenu.dev.kit.cm/20150810", function(data){
+        console.log(data);
+    }, 'jsonp');
     $("#firstwall").css('min-width', (iconwidth * 14));
     
     console.log('cellw: ' + iconwidth);
@@ -103,7 +107,7 @@ $(document).ready(function () {
     //addMenuToIcons();
     setLabels();
     iconMenuListeners();
-    folderIconInit();
+    
     
     horizontalgridscroll = (Number(($("#firstwall .brick-icon")[0].style.width).slice(0, -2)) + 30);
     verticalgridscroll = (Number(($("#firstwall .brick-icon")[0].style.height).slice(0, -2)) + 30);
@@ -111,7 +115,6 @@ $(document).ready(function () {
     staticEventListeners()
     //swipeHandlers();
     setScrollbar();
-    
     $("#firstwall").height($("#firstwall").height() + 15);
     $(".rss-feed").css('min-height', (iconwidth * 2));
     $(".rss-feed").css('max-height', (iconwidth * 2));
@@ -691,13 +694,14 @@ function folderIconInit() {
     var miniiconwidth = rawminiiconwidth - miniicongutter;
     var miniiconheight = miniiconwidth;
     $(".folder[folder-id]").each(function(){
-        $(this).attr('data-wall-width', $(this).width());
+        
         var folderhtmlid = $(this).attr('id');
         var folderid =  $(this).attr('folder-id');
         var cellheight = $(this).attr('cellheight');
         var cellwidth = $(this).attr('cellwidth');
         $(this).children(".foldergrid").width((Number($(this)[0].style.width.slice(0, -2))) - miniicongutter);
-        console.log('minigutter: ' + miniicongutter);
+        $(this).children(".foldergrid").height((Number($(this)[0].style.height.slice(0, -2))) - miniicongutter);
+        
         var folderJSON = window['folder' + folderid + 'JSON'];
         var temp = "<div class='brick {class}' data-position=\"{initialPosition}\" style='width:{width}px; height:{height}px;'><img src={src} /></div>";
     
