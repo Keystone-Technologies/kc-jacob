@@ -331,12 +331,18 @@ var verticalgridscroll;
             }
         },
         adjustUnit: function(width, height, setting) {
+            
+            
             var gutterX = setting.gutterX;
+            if (setting.folderwidth > 1){
+                gutterX = gutterX + (gutter / limitCol);
+            }
+
             var gutterY = setting.gutterY;
             var runtime = setting.runtime;
             var cellW = setting.cellW;
             var cellH = setting.cellH;
-
+            console.log('pwidth: ' + width);
             $.isFunction(cellW) && (cellW = cellW(width));
             cellW = 1 * cellW;
             !$.isNumeric(cellW) && (cellW = 1);
@@ -344,13 +350,17 @@ var verticalgridscroll;
             $.isFunction(cellH) && (cellH = cellH(height));
             cellH = 1 * cellH;
             !$.isNumeric(cellH) && (cellH = 1);
-
             if ($.isNumeric(width)) {
                 // adjust cell width via container;
                 cellW < 1 && (cellW = cellW * width);
-
                 // estimate total columns;
-                var limitCol = Math.max(1, Math.floor(width / cellW));
+                var limitCol;
+                if (setting.folderwidth > 1){
+                    limitCol = (setting.folderwidth * 3);
+                }
+                else {
+                    limitCol = Math.max(1, Math.floor(width / cellW));
+                }
 
                 // adjust unit size for fit width;
                 if (!$.isNumeric(gutterX)) {
@@ -358,19 +368,39 @@ var verticalgridscroll;
                     gutterX = Math.max(0, gutterX);
                 }
 
-                limitCol = Math.floor((width + gutterX) / cellW);
+                console.log('XGut: ' + gutterX);
+                console.log("ccccell " + cellW);
+                console.log('mwidth: ' + width);
+                
+                if (setting.folderwidth > 1){
+                    limitCol = (setting.folderwidth * 3);
+                }
+                else {
+                    limitCol = Math.floor((width + gutterX) / cellW);
+                }
+                
+                console.log('limcol: ' + limitCol);
                 runtime.cellW = (width + gutterX) / Math.max(limitCol, 1);
                 runtime.cellS = runtime.cellW / cellW;
                 runtime.gutterX = gutterX;
                 runtime.limitCol = limitCol;
+                console.log('pwidth2: ' + runtime.cellW);
             } 
+            
 
             if ($.isNumeric(height)) {
                 // adjust cell height via container;
                 cellH < 1 && (cellH = cellH * height);
-
                 // estimate total rows;
-                var limitRow = Math.max(1, Math.floor(height / cellH));
+                var limitRow;
+                if (setting.folderheight > 1){
+                    limitRow = (setting.folderheight * 3);
+                }
+                else {
+                    limitRow = Math.max(1, Math.floor(height / cellH));
+                }
+                console.log('cellheightlimitrow: ' + limitRow);
+                
 
                 // adjust size unit for fit height;
                 if (!$.isNumeric(gutterY)) {
@@ -378,8 +408,8 @@ var verticalgridscroll;
                     gutterY = Math.max(0, gutterY);
                 }
 
-                limitRow = Math.floor((height + gutterY) / cellH);
                 runtime.cellH = (height + gutterY) / Math.max(limitRow, 1);
+                console.log('cellh: ' + runtime.cellH)
                 runtime.cellS = runtime.cellH / cellH;
                 runtime.gutterY = gutterY;
                 runtime.limitRow = limitRow;
@@ -557,6 +587,7 @@ var verticalgridscroll;
             var gutterX = runtime.gutterX;
             var cellH = runtime.cellH;
             var cellW = runtime.cellW;
+            console.log('cellw: ' + cellW);
             var totalWidth = Math.max(0, cellW * totalCol - gutterX);
             var totalHeight = Math.max(0, cellH * totalRow - gutterY);
             console.log('totalWidth: ' + Math.ceil(totalWidth)); 
@@ -1053,6 +1084,7 @@ var verticalgridscroll;
             },
 
             fitZone: function(width, height) {
+                
                 var allBlock = container.find(setting.selector).removeAttr('id'),
                     block = null,
                     activeBlock = [];

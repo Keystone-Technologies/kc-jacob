@@ -227,9 +227,10 @@ function folderModalAddCells(folderid){
     var temp = "<div class='brick {class}' link=\"{link}\" data-position=\"{initialPosition}\" style='width:{width}px; height:{height}px;' ><img src={src} /><p class='folderapptext'>{text}</p></div>";
     //WITHOUT LABELSvar temp = "<div class='brick {class}' link=\"{link}\" data-position=\"{initialPosition}\" style='width:{width}px; height:{height}px;' ><img src={src} /></div>";
     var folderJSON = window['folder' + folderid + 'JSON'];
-    var w = 1, h = 1, html = '', limitItem = folderJSON.length;
+    var w = 1, h = 1, html = '', limitItem = Math.min(15, folderJSON.length);
 
     for (var i = 0; i < limitItem; ++i) {
+        console.log(i);
         html += temp
             .replace(/\{width\}/, folderJSON[i].width)
             .replace("{height}", folderJSON[i].height)
@@ -643,7 +644,7 @@ function firstWallInit() {
     });
     wall.fitZone();
     wall.refresh();
-    console.log("main grid loaded");
+    console.log("firstwall grid loaded");
 }
 
 function freewallInit() {
@@ -669,7 +670,7 @@ function freewallInit() {
     });
     wall.fitHeight();
     wall.fitWidth();
-    console.log("main grid loaded");
+    console.log("freewall grid loaded");
 }
 
 function appTrayInit() {
@@ -696,7 +697,7 @@ function folderIconInit() {
     var miniiconwidth = rawminiiconwidth - miniicongutter;
     var miniiconheight = miniiconwidth;
     $(".folder[folder-id]").each(function(){
-        
+        console.log('-------------------------------')
         var folderhtmlid = $(this).attr('id');
         var folderid =  $(this).attr('folder-id');
         var cellheight = $(this).attr('cellheight');
@@ -705,7 +706,7 @@ function folderIconInit() {
         $(this).children(".foldergrid").height((Number($(this)[0].style.height.slice(0, -2))) - miniicongutter);
         
         var folderJSON = window['folder' + folderid + 'JSON'];
-        var temp = "<div class='brick {class}' data-position=\"{initialPosition}\" style='width:{width}px; height:{height}px;'><img src={src} /></div>";
+        var temp = "<div class='brick miniicon' data-position=\"{initialPosition}\" style='width:{width}px; height:{height}px;'><img src={src} /></div>";
     
         var w = 1, h = 1, html = '', limitItem = folderJSON.length;
     
@@ -725,7 +726,7 @@ function folderIconInit() {
         $("#" + folderhtmlid + " .foldergrid").html(html);
         
         var foldericongrid = new freewall("#" + folderhtmlid + " .foldergrid");
-        console.log(miniiconwidth);
+        console.log('given cellw: ' + miniiconwidth);
         foldericongrid.reset({
             draggable: false,
             selector: '.brick',
@@ -735,8 +736,16 @@ function folderIconInit() {
             cellH: miniiconheight,
             gutterX: miniicongutter,
             gutterY: miniicongutter,
-        }); 
+            folderwidth: cellwidth,
+            folderheight: cellheight,
+            onComplete: function(){
+                console.log('dataw: ' + foldericongrid.container.attr("Data-wall-width"));
+                console.log('actualw: ' + $('#' + folderhtmlid).children(".foldergrid").width());
+                console.log('styledw: ' + $('#' + folderhtmlid).children(".foldergrid")[0].style.width);
+            },
+        });
         foldericongrid.fitZone();
+        
     });
 }
 function staticEventListeners() {

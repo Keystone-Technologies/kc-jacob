@@ -27,7 +27,6 @@
         var iconheight = iconwidth;
         
         var gutter = Math.floor(iconwidth / 3.33);
-        console.log(gutter);
     </script
 
 <!-- Local stylsheets and scripts -->

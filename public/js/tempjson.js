@@ -497,6 +497,32 @@ var folder3JSON = [
     { "width": 100, "height": 100, "initialPosition":"1-4", "link":"http://www.blogger.com", "src": "img/GoogleBlogs_AppIcon.png", "class": "folder-brick-icon", "text": "Google Blogs" },
     { "width": 100, "height": 100, "initialPosition":"2-0", "link":"http://www.cnn.com", "src": "img/RSSAppIcon.png", "class": "folder-brick-icon", "text": "RSS" },
     { "width": 100, "height": 100, "initialPosition":"2-1", "link":"http://www.pinterest.com", "src": "img/PinterestAppIcon.png", "class": "folder-brick-icon", "text": "Pinterest" },
+    
+    { "width": 100, "height": 100, "initialPosition":"2-2", "link":"http://www.outlook.com", "src": "img/Email.png", "class": "folder-brick-icon", "text": "Email" },
+    { "width": 100, "height": 100, "initialPosition":"2-3", "link":"http://www.youtube.com", "src": "img/YouTubeAppIcon.png", "class": "folder-brick-icon", "text": "YouTube" },
+    { "width": 100, "height": 100, "initialPosition":"2-4", "link":"http://www.webmd.com", "src": "img/WebMD_AppIcon.png", "class": "folder-brick-icon", "text": "WebMD" },
+    { "width": 100, "height": 100, "initialPosition":"3-0", "link":"http://www.twitter.com", "src": "img/TwitterAppIcon.png", "class": "folder-brick-icon", "text": "Twitter" },
+    { "width": 100, "height": 100, "initialPosition":"3-1", "link":"http://www.kayak.com", "src": "img/FlightsAppIcon.png", "class": "folder-brick-icon", "text": "Flights" },
+    { "width": 100, "height": 100, "initialPosition":"3-2", "link":"http://www.google.com", "src": "img/TheSecret_AppIcon.png", "class": "folder-brick-icon", "text": "Secrets" },
+    { "width": 100, "height": 100, "initialPosition":"3-3", "link":"http://www.spotify.com", "src": "img/SpotifyAppIcon.png", "class": "folder-brick-icon", "text": "Spotify" },
+    { "width": 100, "height": 100, "initialPosition":"3-4", "link":"http://www.skype.com", "src": "img/Skype_AppIcon.png", "class": "folder-brick-icon", "text": "Skype" },
+    { "width": 100, "height": 100, "initialPosition":"4-0", "link":"http://www.google.com", "src": "img/SettingsAppIcon.png", "class": "folder-brick-icon", "text": "Settings" },
+    { "width": 100, "height": 100, "initialPosition":"4-1", "link":"http://www.blogger.com", "src": "img/GoogleBlogs_AppIcon.png", "class": "folder-brick-icon", "text": "Google Blogs" },
+    { "width": 100, "height": 100, "initialPosition":"4-2", "link":"http://www.cnn.com", "src": "img/RSSAppIcon.png", "class": "folder-brick-icon", "text": "RSS" },
+    { "width": 100, "height": 100, "initialPosition":"4-3", "link":"http://www.pinterest.com", "src": "img/PinterestAppIcon.png", "class": "folder-brick-icon", "text": "Pinterest" },
+    
+    { "width": 100, "height": 100, "initialPosition":"4-4", "link":"http://www.outlook.com", "src": "img/Email.png", "class": "folder-brick-icon", "text": "Email" },
+    { "width": 100, "height": 100, "initialPosition":"5-0", "link":"http://www.youtube.com", "src": "img/YouTubeAppIcon.png", "class": "folder-brick-icon", "text": "YouTube" },
+    { "width": 100, "height": 100, "initialPosition":"5-1", "link":"http://www.webmd.com", "src": "img/WebMD_AppIcon.png", "class": "folder-brick-icon", "text": "WebMD" },
+    { "width": 100, "height": 100, "initialPosition":"5-2", "link":"http://www.twitter.com", "src": "img/TwitterAppIcon.png", "class": "folder-brick-icon", "text": "Twitter" },
+    { "width": 100, "height": 100, "initialPosition":"5-3", "link":"http://www.kayak.com", "src": "img/FlightsAppIcon.png", "class": "folder-brick-icon", "text": "Flights" },
+    { "width": 100, "height": 100, "initialPosition":"5-4", "link":"http://www.google.com", "src": "img/TheSecret_AppIcon.png", "class": "folder-brick-icon", "text": "Secrets" },
+    { "width": 100, "height": 100, "initialPosition":"6-0", "link":"http://www.spotify.com", "src": "img/SpotifyAppIcon.png", "class": "folder-brick-icon", "text": "Spotify" },
+    { "width": 100, "height": 100, "initialPosition":"6-1", "link":"http://www.skype.com", "src": "img/Skype_AppIcon.png", "class": "folder-brick-icon", "text": "Skype" },
+    { "width": 100, "height": 100, "initialPosition":"6-2", "link":"http://www.google.com", "src": "img/SettingsAppIcon.png", "class": "folder-brick-icon", "text": "Settings" },
+    { "width": 100, "height": 100, "initialPosition":"6-3", "link":"http://www.blogger.com", "src": "img/GoogleBlogs_AppIcon.png", "class": "folder-brick-icon", "text": "Google Blogs" },
+    { "width": 100, "height": 100, "initialPosition":"6-4", "link":"http://www.cnn.com", "src": "img/RSSAppIcon.png", "class": "folder-brick-icon", "text": "RSS" },
+    { "width": 100, "height": 100, "initialPosition":"7-1", "link":"http://www.pinterest.com", "src": "img/PinterestAppIcon.png", "class": "folder-brick-icon", "text": "Pinterest" },
     ];
 
 var folder4JSON = [
@@ -517,6 +543,10 @@ var folder7JSON = [
     { "width": 100, "height": 100, "initialPosition":"0-1", "link":"http://www.instagram.com", "src": "img/Instagram_AppIcon.png", "class": "folder-brick-icon", "text": "Instagram" },
     { "width": 100, "height": 100, "initialPosition":"0-2", "link":"http://www.youtube.com", "src": "img/YouTubeAppIcon.png", "class": "folder-brick-icon", "text": "YouTube" },
     { "width": 100, "height": 100, "initialPosition":"0-3", "link":"http://www.flickr.com", "src": "img/Flickr_AppIcon.png", "class": "folder-brick-icon", "text": "Flickr" },
+    { "width": 100, "height": 100, "initialPosition":"0-4", "link":"http://www.photos.google.com", "src": "img/GooglePhotos_AppIcon.png", "class": "folder-brick-icon", "text": "Google Photos" },
+    { "width": 100, "height": 100, "initialPosition":"1-0", "link":"http://www.instagram.com", "src": "img/Instagram_AppIcon.png", "class": "folder-brick-icon", "text": "Instagram" },
+    { "width": 100, "height": 100, "initialPosition":"1-1", "link":"http://www.youtube.com", "src": "img/YouTubeAppIcon.png", "class": "folder-brick-icon", "text": "YouTube" },
+    { "width": 100, "height": 100, "initialPosition":"1-2", "link":"http://www.flickr.com", "src": "img/Flickr_AppIcon.png", "class": "folder-brick-icon", "text": "Flickr" },
     ];
     
 var folder8JSON = [

@@ -444,7 +444,7 @@ html {
   cursor: pointer;
 }
 
-.folder-brick-icon {
+.folder-brick-icon, .miniicon {
   cursor: pointer;
   padding-bottom: 4px;
 }
