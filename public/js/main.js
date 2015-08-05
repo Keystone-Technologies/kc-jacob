@@ -28,11 +28,15 @@ $(window).load(function(){
 })
 
 $(document).ready(function () {
-    console.log('sending request');
-    $.get("http://foodmenu.dev.kit.cm/20150810", function(data){
-        console.log('Data: ');
-        console.log(data);
-    }, 'jsonp');
+    parseRSS('http://www.npr.org/rss/rss.php?id=1019', function(data){
+        var html;
+        $.each(data.entries, function(i, entry){
+            console.log(entry);
+            var temp = "<div id='entry{id}' class='scrollerentry'><a href='{link}'<div>{title}</div></a><div>{content}</div></div>";
+            html += temp.replace("{link}", entry.link).replace("{id}", 'id').replace("{title}", entry.title).replace("{content}",entry.contentSnippet);
+        });
+        $("#scroller-content").html(html);
+    })
     $("#firstwall").css('min-width', (iconwidth * 14));
     
     console.log('cellw: ' + iconwidth);
@@ -155,6 +159,16 @@ $(window).resize(function(){
         console.log("gridscroll: " +  $("#grid-container").scrollTop());
     }
 });
+
+function parseRSS(url, callback) {
+  $.ajax({
+    url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent(url),
+    dataType: 'json',
+    success: function(data) {
+      callback(data.responseData.feed);
+    }
+  });
+}
 
 $.fn.textWidth = function(text, font) {
     if (!$.fn.textWidth.fakeEl) $.fn.textWidth.fakeEl = $('<span>').appendTo(document.body);
