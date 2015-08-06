@@ -30,6 +30,19 @@ sub startup {
     });
   });
   
+  $r->get('/tenant/:file')->to(cb => sub {
+    my $c = shift;
+    my $file = $c->param('file');
+    my $tenant = $c->session->{tenant} || 'keystone-technologies';
+    if ( $file eq 'css' ) {
+      $c->reply->static("tenants/$tenant-style.css");
+    } elsif ( $file eq 'logo' ) {
+      $c->reply->static("tenants/$tenant-logo.png");
+    } elsif ( $file eq 'banner' ) {
+      $c->reply->static("tenants/$tenant-banner.png");
+    }
+  });
+
   $r->get('/videocall/#name/#email')->to(cb => sub {
     my $c = shift;
     my $me = {
@@ -103,8 +116,12 @@ sub startup {
     ]);
   });
 
-  $r->get('/:tenant', {tenant => 'keystone-technologies'})->name('index');
+  $r->get('/:tenant', {tenant => ''})->to(cb => sub {
+    my $c = shift;
+    $c->session(tenant => $c->param('tenant') || 'keystone-technologies') unless $c->session('tenant');
+    $c->stash(tenant => $c->session('tenant'));
+    $c->redirect_to('/') if $c->param('tenant');
+  })->name('index');
 }
 
-  
 1;
