@@ -5,6 +5,9 @@ use Mojo::Transaction::WebSocket;
 sub startup {
   my $self = shift;
 
+  $self->secrets(['new_passw0rd', 'old_passw0rd', 'very_old_passw0rd']);
+  $self->sessions->cookie_name('mysession');
+
   # Documentation browser under "/perldoc"
   $self->plugin('PODRenderer');
   $self->plugin(JSONP => callback => 'callback');
@@ -118,7 +121,7 @@ sub startup {
 
   $r->get('/:tenant', {tenant => ''})->to(cb => sub {
     my $c = shift;
-    $c->session(tenant => $c->param('tenant') || 'keystone-technologies') unless $c->session('tenant');
+    $c->session(tenant => $c->param('tenant') || 'keystone-technologies') if $c->param('tenant') || !$c->session('tenant');
     $c->stash(tenant => $c->session('tenant'));
     $c->redirect_to('/') if $c->param('tenant');
   })->name('index');
