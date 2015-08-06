@@ -31,6 +31,7 @@
 
 <!-- Local stylsheets and scripts -->
     <link rel="stylesheet" href="styles/site.css">
+    <link rel="stylesheet" href="styles/WesternHome.css">
     <link rel="stylesheet" href="styles/loading.css">
     <link href="/css/startme.css" media="all" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="styles/breakingNews.css">
@@ -72,34 +73,24 @@
 </div>
 <div id="header" role="banner" class="col-xs-12">
     <div id='branding'>
-        <p id='brandtext'><%= $tenant %></p>
+        <img id='mainlogo' src='img/mainlogo.png'>
     </div>
     <div class="flex clearfix">
         <nav class="left">
             <ul class="buttons">
-                <li class="button ui-droppable" id="pages-menu" title="Keystone Connect">
-                    <i class="startme-icon"></i>
-                    <span>
-                    Keystone Connect: <%= $tenant %>
-                    </span>
-                    <i class="fa fa-chevron-down"></i>
-                </li>
-                <li class="subscribe button">
-                    <i class="fa fa-fw fa-thumb-tack"></i>
-                    Follow
-                </li>
+                <img id='logo' src='img/w3.png'>
             </ul>
 
         </nav>
         <nav class="right">
 
             <div class="buttons" id="menus">
-
+                <a href="http://keystone-technologies.com" class="not-logged-in sign-in button"><i class="fa fa-question-circle"></i>
+                    <span>Help</span>
+                </a>
                 <a href="/users/sign_in" class="not-logged-in sign-in button"><i class="fa fa-sign-in"></i>
                     <span>Sign in</span>
-                </a><a href="/users/sign_out" class="logged-in button no-me-menu" data-method="delete" id="logoutButton" rel="nofollow"><i class="fa fa-sign-out right"></i>
-                <span>Sign out</span>
-            </a>
+                </a>
                 <!--<a class="button logged-in menu" id="me" style="background-image: url(&quot;//www.gravatar.com/avatar/6139e4ad230648ca4f1e68b985ef589c?d=mm&quot;)" title="Test"></a>-->
 
 
@@ -116,10 +107,24 @@
     </div>
     <div class="banner" id='banner'>
         <div class="breakingNews bn-large" id="bn10">
-            <div class="bn-title"><h2>WHOA!</h2><span></span></div>
-            <ul><li style="display: list-item;"><a href="http://google.com"><p id='bannertext'></p></a></li></ul>
+            <div class="bn-title"><h2>Community Message</h2><span></span></div>
+            <div id='bannertextcontainer'><a href="http://google.com"><div id='bannertext'></div></a></div>
         </div>
         <div class="close-banner">X</div>
+    </div>
+</div>
+<div id='footer'>
+    <div id='footerright'>
+    <a class="footerbutton" href='http://keystone-technologies.com'><i class="fa fa-gavel"></i>
+        <span>Legal</span>
+    </a>
+    <a class="footerbutton" href='http://keystone-technologies.com'><i class="fa fa-info-circle"></i>
+        <span>About</span>
+    </a>
+        <img id='keystonelogo' src='img/ktleaf.png'>
+    </div>
+    <div id='footercenter'>
+        <div class="footerbutton"><i class='fa fa-square-o'></i></div>
     </div>
 </div>
 <div id="home">

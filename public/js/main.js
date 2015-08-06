@@ -20,19 +20,20 @@ var messageexpiration;
 $(window).load(function(){
     folderIconInit();
     $("#loadingcover").remove();
+    console.log('showing modal');
     console.log('setting timeout');
     setTimeout(function(){
-        console.log('timeout fired')
+        console.log('timeout fired');
         $("#banner").remove();
         }, messageexpiration);
-})
+});
 
 $(document).ready(function () {
     parseRSS('http://www.npr.org/rss/rss.php?id=1019', function(data){
         var html;
         $.each(data.entries, function(i, entry){
             console.log(entry);
-            var temp = "<div id='entry{id}' class='scrollerentry'><a href='{link}'<div>{title}</div></a><div>{content}</div></div>";
+            var temp = "<div id='entry{id}' class='scrollerentry'><a href='{link}'><div class='title'>{title}</div></a><div class='content'>{content}</div></div>";
             html += temp.replace("{link}", entry.link).replace("{id}", 'id').replace("{title}", entry.title).replace("{content}",entry.contentSnippet);
         });
         $("#scroller-content").html(html);
@@ -75,7 +76,7 @@ $(document).ready(function () {
         $("#app-drawer-container").css('transform', 'scale(1)');
         $("#app-drawer-container").css('left', (($("#row").width() - $("#app-drawer-container").width()) / 2));
         $("#app-tray").height(140);
-        $("#gridholder").height($(window).height() - $("#app-tray").height() - $("#header").height());
+        $("#gridholder").height($(window).height() - ($("#app-tray").height() + 35) - $("#header").height());
         $("#grid-container").height(Math.floor($("#gridholder").height() / iconheight) * iconheight);
         $("#grid-container").width(Math.floor(($(window).width() / iconwidth)) * iconwidth);
         $("#grid-container").css('top', (($("#gridholder").height() - $("#grid-container").height()) / 2));
@@ -90,7 +91,7 @@ $(document).ready(function () {
         $("#app-drawer-container").css('transform', 'scale(' + ((scale + 1).toString()) + ')');
         $("#app-drawer-container").css('transform-origin', "0 0");
         $("#app-tray").height(($("#app-drawer-container").height() * (scale + 1)) + ($("#grid-pagination").height()));
-        $("#gridholder").height($(window).height() - $("#app-tray").height() - $("#header").height());
+        $("#gridholder").height($(window).height() - ($("#app-tray").height() + 35) - $("#header").height());
         $("#grid-container").width(screenwidth);
         $("#grid-container").height(((Math.floor($("#gridholder").height() / (iconheight * (scale + 1)))) * (iconheight * (scale + 1))) / (scale + 1));
         $("#grid-container").css('left', Math.abs((($("#firstwall").width() * (scale + 1)) - $("#gridholder").width()) / 2));
@@ -115,8 +116,8 @@ $(document).ready(function () {
     iconMenuListeners();
     
     
-    horizontalgridscroll = (Number(($("#firstwall .brick-icon")[0].style.width).slice(0, -2)) + 30);
-    verticalgridscroll = (Number(($("#firstwall .brick-icon")[0].style.height).slice(0, -2)) + 30);
+    horizontalgridscroll = (Number(($("#firstwall .brick-icon")[0].style.width).slice(0, -2)) + gutter);
+    verticalgridscroll = (Number(($("#firstwall .brick-icon")[0].style.height).slice(0, -2)) + gutter);
     
     staticEventListeners()
     //swipeHandlers();
@@ -134,7 +135,7 @@ $(window).resize(function(){
         $("#app-drawer-container").width(Math.floor((($(window).width() - ($(window).width() * .1)) / iconwidth)) * iconwidth);
         $("#app-drawer-container").css('left', (($("#row").width() - $("#app-drawer-container").width()) / 2));
         $("#app-tray").height(140);
-        $("#gridholder").height($(window).height() - $("#app-tray").height() - $("#header").height());
+        $("#gridholder").height($(window).height() - ($("#app-tray").height() + 35) - $("#header").height());
         $("#grid-container").css('transform', 'scale(1)');
         $("#grid-container").height(Math.floor($("#gridholder").height() / iconheight) * iconheight);
         $("#grid-container").width(Math.floor(($(window).width() / iconwidth)) * iconwidth);
@@ -149,7 +150,7 @@ $(window).resize(function(){
         $("#app-drawer-container").css('transform-origin', "0 0");
         $("#app-drawer-container").css('left', (($("#row").width() - ($("#app-drawer-container").width() * (scale +1))) / 2));
         $("#app-tray").height(($("#app-drawer-container").height() * (scale + 1)) + ($("#grid-pagination").height()));
-        $("#gridholder").height($(window).height() - $("#app-tray").height() - $("#header").height());
+        $("#gridholder").height($(window).height() - ($("#app-tray").height() + 35) - $("#header").height());
         $("#grid-container").width(screenwidth);
         $("#grid-container").height(((Math.floor($("#gridholder").height() / (iconheight * (scale + 1)))) * (iconheight * (scale + 1))) / (scale + 1));
         $("#grid-container").css('left', Math.abs((($("#firstwall").width() * (scale + 1)) - $("#gridholder").width()) / 2));
@@ -231,7 +232,8 @@ function folderModalInit() {
     });
     foldergrid.fitZone();
     $(".folder-brick-icon").click(function(){
-        window.location.href = $(this).attr("link");
+        var win = window.open($(this).attr("link"), '_blank');
+        win.focus();
     });
     console.log("Folder grid loaded");
 }
@@ -270,7 +272,6 @@ function showFolderModal() {
         $(".folder-modal").modal('show');
         startingName = $(this).children("p").text();
         $(".folder-name").html(startingName);
-        
         /*
         $currentFolder = $(this);
         $(".folder-name").on("dblclick", function () {
@@ -519,8 +520,9 @@ function populateAddTo() {
 
 function iconMenuListeners() {
     $('.brick-icon[link]').click(function() {
-        window.location.href = $(this).attr("link");
-        console.log($(this).attr("link"));
+        //window.location.href = $(this).attr("link");
+        var win = window.open($(this).attr("link"), '_blank');
+        win.focus();
     });
 
     $('.delete-icon').click(function () {

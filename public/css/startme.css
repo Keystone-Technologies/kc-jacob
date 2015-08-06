@@ -2298,7 +2298,7 @@ body.has-pinned-sidebar #header {
     height: 55px;
     line-height: 44px;
     vertical-align: top;
-    padding: 8px 10px;
+    padding: 2.5px 10px;
     margin: 0 10px;
     white-space: nowrap;
     overflow: hidden
